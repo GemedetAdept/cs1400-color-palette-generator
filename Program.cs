@@ -37,19 +37,19 @@ while (inputMenu) {
 	// Change active option using the Up and Down arrow keys
 	var keyboardInput = Console.ReadKey(false).Key;
 
-	if (keyboardInput == ConsoleKey.Enter) {
-		menuSelection = optionActive;
-		colorInput(menuSelection);
-	}
-	else if (keyboardInput == ConsoleKey.UpArrow && optionActive > 0){
-		optionActive -= 1;
-	}
-	else if (keyboardInput == ConsoleKey.DownArrow && optionActive < (inputMenuCursors.Length-1)) {
-		optionActive += 1;
-	}
-	else {
-		continue;
-	}
+		if (keyboardInput == ConsoleKey.Enter) {
+			menuSelection = optionActive;
+			colorInput(menuSelection);
+		}
+		else if (keyboardInput == ConsoleKey.UpArrow && optionActive > 0){
+			optionActive -= 1;
+		}
+		else if (keyboardInput == ConsoleKey.DownArrow && optionActive < (inputMenuCursors.Length-1)) {
+			optionActive += 1;
+		}
+		else {
+			continue;
+		}
 }
 
 void colorInput(int mode) {
@@ -88,11 +88,15 @@ void colorInput(int mode) {
 
 	Snippet.Break();
 
+	// Accept code input and split into individual values
 	string codeInput = "";
 	Console.Write("> ");
 	codeInput = Console.ReadLine();
 
-	Console.WriteLine(codeInput);
+	string[] parsedCode = codeInput.Split(", ");
+	foreach (string code in parsedCode) {
+		Console.WriteLine(code);
+	}
 };
 
 
