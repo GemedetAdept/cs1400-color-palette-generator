@@ -17,6 +17,7 @@ string[] inputMenuCursors = {
 };
 
 int optionActive = 0;
+int menuSelection = 0;
 
 while (inputMenu) {
 
@@ -30,25 +31,42 @@ while (inputMenu) {
 
 	// Display menu options
 	for (int i = 0; i < inputMenuCursors.Length; i++) {
-		Console.WriteLine($"{inputMenuCursors[i]} {(ColorInput)i}");
+		Console.WriteLine($"{inputMenuCursors[i]} {(ColorModes)i}");
 	}
 
 	// Change active option using the Up and Down arrow keys
-	var arrowKeyInput = Console.ReadKey(false).Key;
-	if (arrowKeyInput == ConsoleKey.UpArrow && optionActive > 0){
+	var keyboardInput = Console.ReadKey(false).Key;
+
+	if (keyboardInput == ConsoleKey.Enter) {
+		menuSelection = optionActive;
+		colorInput(menuSelection);
+	}
+	else if (keyboardInput == ConsoleKey.UpArrow && optionActive > 0){
 		optionActive -= 1;
 	}
-	else if (arrowKeyInput == ConsoleKey.DownArrow && optionActive < (inputMenuCursors.Length-1)) {
+	else if (keyboardInput == ConsoleKey.DownArrow && optionActive < (inputMenuCursors.Length-1)) {
 		optionActive += 1;
 	}
 	else {
-		optionActive = optionActive;
+		continue;
 	}
 }
 
+void colorInput(int mode) {
+
+	inputMenu = false;
+	Console.Clear();
+	Console.WriteLine($"Color Mode: [{(ColorModes)mode}]");
+
+	switch (mode) {
+
+		case 0:
+			
+	}
+};
 
 
-enum ColorInput {
+enum ColorModes {
 	CMYK,
 	CSSName,
 	Hexadecimal,
