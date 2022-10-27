@@ -84,6 +84,9 @@ void colorInput(int mode) {
 		case (int)ColorModes.RGB:
 			Console.WriteLine("52, 171, 185");
 			break;
+		case 8:
+			ConvertMode.ConvertFromBaseTen(15.0, 16);
+			break;
 	}
 
 	Snippet.Break();
@@ -99,6 +102,7 @@ void colorInput(int mode) {
 	}
 };
 
+// ------------------------------------------------------------
 
 enum ColorModes {
 	CMYK,
@@ -108,4 +112,33 @@ enum ColorModes {
 	HSL,
 	HSV,
 	RGB,
+}
+
+enum BaseAlphabet {
+	A = 10,
+	B,
+	C,
+	D,
+	E,
+	F,
+	G,
+	H,
+	I,
+	J,
+	K,
+	L,
+	M,
+	N,
+	O,
+	P,
+	Q,
+	R,
+	S,
+	T,
+	U,
+	V,
+	W,
+	X,
+	Y,
+	Z,
 }
