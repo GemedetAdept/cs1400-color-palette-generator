@@ -14,6 +14,7 @@ string[] inputMenuCursors = {
 	cursorIdle,
 	cursorIdle,
 	cursorIdle,
+	cursorIdle,
 };
 
 int optionActive = 0;
@@ -83,9 +84,6 @@ void colorInput(int mode) {
 			break;
 		case (int)ColorModes.RGB:
 			Console.WriteLine("52, 171, 185");
-			break;
-		case 8:
-			ConvertMode.ConvertFromBaseTen(15.0, 16);
 			break;
 	}
 
