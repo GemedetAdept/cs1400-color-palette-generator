@@ -31,7 +31,7 @@
 public class ConvertMode {
 
 	void AlphabetAssignment(int valueInput) {
-		
+
 		Dictionary<string, int> baseAlphabet = new Dictionary<string, int>() {
 			{"A", 10}, {"B", 11}, {"C", 12}, {"D", 13}, {"E", 14}, {"F", 15}, {"G", 16}, {"H", 17}, 
 			{"I", 18}, {"J", 19}, {"K", 20}, {"L", 21}, {"M", 22}, {"N", 23}, {"O", 24}, {"P", 25}, 
@@ -52,25 +52,6 @@ public class ConvertMode {
 
 	public static List<string> ConvertFromBaseTen(double input, int baseOutput, List<string> outputValue) {
 
-		Dictionary<string, int> baseAlphabet = new Dictionary<string, int>() {
-			{"A", 10}, {"B", 11}, {"C", 12}, {"D", 13}, {"E", 14}, {"F", 15}, {"G", 16}, {"H", 17}, 
-			{"I", 18}, {"J", 19}, {"K", 20}, {"L", 21}, {"M", 22}, {"N", 23}, {"O", 24}, {"P", 25}, 
-			{"Q", 26}, {"R", 27}, {"S", 28}, {"T", 29}, {"U", 30}, {"V", 31}, {"W", 32}, {"X", 33}, 
-			{"Y", 34}, {"Z", 35},
-		};
-
-		if (input % 1 == 0) {
-			foreach (var keyValuePair in baseAlphabet) {
-
-				if ((int)input == keyValuePair.Value) {
-					outputValue.Add(keyValuePair.Key);
-
-				}
-			}
-		}
-
-		else {
-
 			double modRemainder = 0.0;
 			double baseQuotient = 0.0;
 			double quotientSubRemainder = 0.0;
@@ -78,9 +59,6 @@ public class ConvertMode {
 			modRemainder = input % baseOutput;
 			baseQuotient = input / baseOutput;
 			quotientSubRemainder = baseQuotient - (modRemainder/baseOutput);
-
-
-		}
 
 		return outputValue;
 	}
