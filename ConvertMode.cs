@@ -30,7 +30,7 @@
 
 public class ConvertMode {
 
-	void AlphabetAssignment(int valueInput) {
+	string AlphabetAssignment(int valueInput) {
 
 		Dictionary<string, int> baseAlphabet = new Dictionary<string, int>() {
 			{"A", 10}, {"B", 11}, {"C", 12}, {"D", 13}, {"E", 14}, {"F", 15}, {"G", 16}, {"H", 17}, 
@@ -39,13 +39,12 @@ public class ConvertMode {
 			{"Y", 34}, {"Z", 35},
 		};
 
-		if (input % 1 == 0) {
+		string valueOutput = "";
+		
+		if (valueInput % 1 == 0 && valueInput >= 10 && valueInput <= 35) {
 			foreach (var keyValuePair in baseAlphabet) {
 
-				if ((int)input == keyValuePair.Value) {
-					outputValue.Add(keyValuePair.Key);
-
-				}
+				if (valueInput == keyValuePair.Value) valueOutput = keyValuePair.Key; 
 			}
 		}
 	}
