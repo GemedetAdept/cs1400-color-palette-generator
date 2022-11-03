@@ -1,0 +1,15 @@
+/Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/obj/Debug/net6.0/cs1400-color-palette-generator.csproj.AssemblyReference.cache
+/Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/obj/Debug/net6.0/cs1400-color-palette-generator.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/obj/Debug/net6.0/cs1400-color-palette-generator.AssemblyInfoInputs.cache
+/Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/obj/Debug/net6.0/cs1400-color-palette-generator.AssemblyInfo.cs
+/Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/obj/Debug/net6.0/cs1400-color-palette-generator.csproj.CoreCompileInputs.cache
+/Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/bin/Debug/net6.0/cs1400-color-palette-generator
+/Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/bin/Debug/net6.0/cs1400-color-palette-generator.deps.json
+/Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/bin/Debug/net6.0/cs1400-color-palette-generator.runtimeconfig.json
+/Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/bin/Debug/net6.0/cs1400-color-palette-generator.dll
+/Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/bin/Debug/net6.0/cs1400-color-palette-generator.pdb
+/Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/obj/Debug/net6.0/cs1400-color-palette-generator.dll
+/Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/obj/Debug/net6.0/refint/cs1400-color-palette-generator.dll
+/Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/obj/Debug/net6.0/cs1400-color-palette-generator.pdb
+/Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/obj/Debug/net6.0/cs1400-color-palette-generator.genruntimeconfig.cache
+/Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/obj/Debug/net6.0/ref/cs1400-color-palette-generator.dll
