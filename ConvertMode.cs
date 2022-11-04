@@ -48,6 +48,8 @@ public class ConvertMode {
 			}
 		}
 
+		else valueOutput = valueInput.ToString();
+
 		return valueOutput;
 	}
 
@@ -76,15 +78,27 @@ public class ConvertMode {
 		return outputValue;
 	}
 
-	public static void RGBToHex(int red, int green, int blue) {
+	public static string RGBToHex(int red, int green, int blue) {
 
-		List<string> outputValue = new List<string>();
+		List<string> hexParts = new List<string>();
+		string hexOutput = "#";
 
-		outputValue = ConvertFromBaseTen((double)red, 16, outputValue);
 
-		foreach(string outValue in outputValue) {
+		List<string> convertedRed = new List<string>();
+		convertedRed = ConvertFromBaseTen((double)red, 16, convertedRed);
 
-			Console.Write(outValue);
-		}
+		List<string> convertedGreen = new List<string>();
+		convertedGreen = ConvertFromBaseTen((double)green, 16, convertedGreen);
+
+		List<string> convertedBlue = new List<string>();
+		convertedBlue = ConvertFromBaseTen((double)blue, 16, convertedBlue);
+
+
+		hexParts.AddRange(convertedRed);
+		hexParts.AddRange(convertedGreen);
+		hexParts.AddRange(convertedBlue);
+
+		hexOutput += string.Join("", hexParts);
+		return hexOutput;
 	}
 }
