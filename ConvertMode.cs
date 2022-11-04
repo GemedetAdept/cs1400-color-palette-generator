@@ -30,7 +30,7 @@
 
 public class ConvertMode {
 
-	string AlphabetAssignment(int valueInput) {
+	static string AlphabetAssignment(int valueInput) {
 
 		Dictionary<string, int> baseAlphabet = new Dictionary<string, int>() {
 			{"A", 10}, {"B", 11}, {"C", 12}, {"D", 13}, {"E", 14}, {"F", 15}, {"G", 16}, {"H", 17}, 
@@ -53,28 +53,38 @@ public class ConvertMode {
 
 	public static List<string> ConvertFromBaseTen(double input, int baseOutput, List<string> outputValue) {
 
-			double modRemainder = 0.0;
-			double baseQuotient = 0.0;
-			double quotientSubRemainder = 0.0;
+		double modRemainder = 0.0;
+		double baseQuotient = 0.0;
+		double quotientSubRemainder = 0.0;
 
-			modRemainder = input % baseOutput;
-			baseQuotient = input / baseOutput;
-			quotientSubRemainder = baseQuotient - (modRemainder/baseOutput);
+		modRemainder = input % baseOutput;
+		baseQuotient = input / baseOutput;
+		quotientSubRemainder = baseQuotient - (modRemainder/baseOutput);
 
-			outputValue.Add(AlphabetAssignment(quotientSubRemainder));
+		outputValue.Add(AlphabetAssignment((int)quotientSubRemainder));
+		
+		if (modRemainder >= baseOutput) {
+
+			ConvertFromBaseTen(modRemainder, baseOutput, outputValue);
+		}
+
+		else if (modRemainder < baseOutput) {
+
+			outputValue.Add(AlphabetAssignment((int)modRemainder));
+		}
 
 		return outputValue;
-		
-		ConvertFromBaseTen(modRemainder);
 	}
 
 	public static void RGBToHex(int red, int green, int blue) {
+
 		List<string> outputValue = new List<string>();
 
 		outputValue = ConvertFromBaseTen((double)red, 16, outputValue);
+
 		foreach(string outValue in outputValue) {
-			Console.WriteLine(outValue);
+
+			Console.Write(outValue);
 		}
 	}
-
 }
