@@ -1,14 +1,19 @@
 ﻿// CS 1400, Final Project - Color Palette Generator
 // By: Jasmine Carrasco, Chad Miller, and Pluto Zitek
 
+
 string userInput = GetUserInput("Do you want to input color for Hexadecimal, RGB, HSL, or HSV? ");
+
 
 
 if (string.Equals(userInput, "Hexadecimal", StringComparison.OrdinalIgnoreCase))
 {
     Console.WriteLine("Enter a valid Hexadecimal value eg(#806FD9)");
     string? hexadecimal = Console.ReadLine();
-    Console.WriteLine(hexadecimal);
+    if (IsHexadecimal(hexadecimal)) {
+        Console.WriteLine(ConvertToInteger(hexadecimal));
+
+     }
 }
 else if (string.Equals(userInput, "RGB", StringComparison.OrdinalIgnoreCase))
 {
@@ -122,3 +127,72 @@ string GetUserInput(string prompt)
         Console.WriteLine("Not a valid input. Try again.");
     }
 }
+
+bool IsHexadecimal(string hexadecimal)
+{
+    char[] valid = new char[16] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+    foreach (char letter in hexadecimal)
+    {
+        if (hexadecimal.Length != 6)
+        {
+            return false;
+        }
+        if (!valid.Contains(letter))
+        {
+            return false;
+        }
+
+
+    }
+    return true;
+}
+
+int ConvertToInteger(string hexadecimal)
+{
+    List<int> values = new List<int>();
+    double value = 0;
+    char [] nubmers = new char [10]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+
+    
+    foreach (char letter in hexadecimal)
+    {
+        if (nubmers.Contains(letter))
+        {
+
+            values.Add(Convert.ToInt32(letter)-48);
+        }
+        else if (letter == 'A')
+        {
+            values.Add(10);
+        }
+        else if (letter == 'B')
+        {
+            values.Add(11);
+        }
+        else if (letter == 'C')
+        {
+            values.Add(12);
+        }
+        else if (letter == 'D')
+        {
+            values.Add(13);
+        }
+        else if (letter == 'E')
+        {
+            values.Add(14);
+        }
+        else if (letter == 'F')
+        {
+            values.Add(15);
+        }
+    }
+    int y = 0;
+    for (double x = 5; x >= 0; x--)
+    {
+        
+        value = value+values[y]*Math.Pow(16d, x);
+        y++;
+    }
+    return Convert.ToInt32(value);
+}
+
