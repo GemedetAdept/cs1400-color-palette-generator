@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MP46ZLJC60HOGyotkM3A/UuaqptErl6tMWIR00hUCyrX17eDjS1pwcnhRKCwQTVCNfj9Gm3321oI+raBpCtZiQ==",
+  "dgSpecHash": "EAFZ0ECPpGTP0Aqs05MjWFM9lBGliXnEOo+dxWx/YucWs9u0KualSzpC3ET9tRDCYfzQmPxCUUPBqZ6yAW85yA==",
   "success": true,
-  "projectFilePath": "/Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/cs1400-color-palette-generator.csproj",
+  "projectFilePath": "C:\\Users\\chadh\\code\\cs1400-color-palette-generator\\cs1400-color-palette-generator.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
