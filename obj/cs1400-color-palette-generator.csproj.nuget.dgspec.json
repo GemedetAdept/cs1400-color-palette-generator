@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\vivian.zitek\\Programming\\cSharp\\cs1400-color-palette-generator\\cs1400-color-palette-generator.csproj": {}
   },
   "projects": {
@@ -12,14 +13,31 @@
         "projectPath": "C:\\Users\\vivian.zitek\\Programming\\cSharp\\cs1400-color-palette-generator\\cs1400-color-palette-generator.csproj",
         "packagesPath": "C:\\Users\\vivian.zitek\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\vivian.zitek\\Programming\\cSharp\\cs1400-color-palette-generator\\obj\\",
+=======
+    "C:\\Users\\chadh\\code\\cs1400-color-palette-generator\\cs1400-color-palette-generator.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\chadh\\code\\cs1400-color-palette-generator\\cs1400-color-palette-generator.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\chadh\\code\\cs1400-color-palette-generator\\cs1400-color-palette-generator.csproj",
+        "projectName": "cs1400-color-palette-generator",
+        "projectPath": "C:\\Users\\chadh\\code\\cs1400-color-palette-generator\\cs1400-color-palette-generator.csproj",
+        "packagesPath": "C:\\Users\\chadh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\chadh\\code\\cs1400-color-palette-generator\\obj\\",
+>>>>>>> 89b9ac7fd559cdf24ff0f64197544c67b11a1d6d
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\vivian.zitek\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+=======
+          "C:\\Users\\chadh\\AppData\\Roaming\\NuGet\\NuGet.Config"
+>>>>>>> 89b9ac7fd559cdf24ff0f64197544c67b11a1d6d
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -58,7 +76,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+>>>>>>> 89b9ac7fd559cdf24ff0f64197544c67b11a1d6d
         }
       }
     }
