@@ -1,14 +1,15 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "Mqwgw4zIq4BZEXOP3x0v2MmkFkxn20UCAONSNm/HRgvYTA4GJJVs0wS0lcmxdYq9YROGmYEbIqhy/X3Zki2vPA==",
   "success": true,
   "projectFilePath": "C:\\Users\\vivian.zitek\\Programming\\cSharp\\cs1400-color-palette-generator\\cs1400-color-palette-generator.csproj",
-=======
-  "dgSpecHash": "EAFZ0ECPpGTP0Aqs05MjWFM9lBGliXnEOo+dxWx/YucWs9u0KualSzpC3ET9tRDCYfzQmPxCUUPBqZ6yAW85yA==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\chadh\\code\\cs1400-color-palette-generator\\cs1400-color-palette-generator.csproj",
->>>>>>> 89b9ac7fd559cdf24ff0f64197544c67b11a1d6d
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\vivian.zitek\\Programming\\cSharp\\cs1400-color-palette-generator\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
