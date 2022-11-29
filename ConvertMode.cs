@@ -25,31 +25,35 @@
 
 public class ConvertMode {
 
-	public static string RGBToHex(int red, int green, int blue) {
+	public static (double, double, double) RGBtoHSV(int red, int green, int blue) {
 
-		List<string> hexParts = new List<string>();
-		string hexOutput = "#";
+		List<double> valuesRGB = new List<double>();
 
-		List<string> convertedRed = new List<string>();
-		convertedRed = ConvertFromBaseTen((double)red, 16, convertedRed);
+		double redPrime = red/255;
+		double greenPrime = green/255;
+		double bluePrime = blue/255;
 
-		List<string> convertedGreen = new List<string>();
-		convertedGreen = ConvertFromBaseTen((double)green, 16, convertedGreen);
+		valuesRGB.Add(redPrime);
+		valuesRGB.Add(greenPrime);
+		valuesRGB.Add(bluePrime);
 
-		List<string> convertedBlue = new List<string>();
-		convertedBlue = ConvertFromBaseTen((double)blue, 16, convertedBlue);
+		double colorMax = valuesRGB.Max();
+		double colorMin = valuesRGB.Min();
+		double deltaMinMax = colorMax - colorMin;
 
+		double HSVhue = 0.0;
+		if (deltaMinMax == 0) { HSVhue = 0; }
+		else if (colorMax == redPrime) { HSVhue = 60*(((greenPrime - bluePrime)/deltaMinMax) % 6); }
+		else if (colorMax == greenPrime) { HSVhue = 60*(((bluePrime - redPrime)/deltaMinMax) + 2); }
+		else if (colorMax == bluePrime) { HSVhue = 60*(((redPrime - greenPrime)/deltaMinMax) + 4); }
 
-		hexParts.AddRange(convertedRed);
-		hexParts.AddRange(convertedGreen);
-		hexParts.AddRange(convertedBlue);
+		double HSVsaturation = 0.0;
+		if (colorMax == 0) { HSVsaturation = 0; }
+		else if (colorMax != 0) { HSVsaturation = deltaMinMax/colorMax; }
 
-		hexOutput += string.Join("", hexParts);
-		return hexOutput;
-	}
+		double HSVvalue = colorMax;
 
-	public static string RGBtoHSV(int red, int green, int blue) {
-
-		
+		(double, double, double) valuesHSV = (HSVhue, HSVsaturation, HSVvalue);
+		return valuesHSV;
 	}
 }

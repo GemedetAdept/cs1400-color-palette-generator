@@ -3,7 +3,7 @@
 using UserInput;
 
 
-UserInput.UserInput.Input();
+// UserInput.UserInput.Input();
 
 
 
@@ -122,4 +122,6 @@ void ColorHarmonyMenu()
 
 }
 
-ColorHarmonyMenu();
+// ColorHarmonyMenu();
+
+Console.WriteLine(ConvertMode.RGBtoHSV(255,255,255));
