@@ -124,4 +124,7 @@ void ColorHarmonyMenu()
 
 // ColorHarmonyMenu();
 
-Console.WriteLine(ConvertMode.RGBtoHSV(255,255,255));
+(double, double, double) inputRGB = (255, 255, 255);
+var outputHSV = ConvertMode.RGBtoHSV(inputRGB);
+Console.WriteLine(outputHSV);
+Console.WriteLine(ConvertMode.HSVtoRGB(outputHSV));
