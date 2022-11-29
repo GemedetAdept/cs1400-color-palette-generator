@@ -21,6 +21,7 @@
 
 public class ConvertMode {
 
+	// RGB
 	public static (double, double, double) RGBtoHSV((double, double, double) inputRGB) {
 
 		List<double> valuesRGB = new List<double>();
@@ -53,6 +54,39 @@ public class ConvertMode {
 		return valuesHSV;
 	}
 
+	public static (double, double, double) RGBtoHSL((double, double, double) inputRGB) {
+
+		List<double> valuesRGB = new List<double>();
+
+		double redPrime = inputRGB.Item1/255;
+		double greenPrime = inputRGB.Item2/255;
+		double bluePrime = inputRGB.Item3/255;
+
+		valuesRGB.Add(redPrime);
+		valuesRGB.Add(greenPrime);
+		valuesRGB.Add(bluePrime);
+
+		double colorMax = valuesRGB.Max();
+		double colorMin = valuesRGB.Min();
+		double deltaMinMax = colorMax - colorMin;
+
+		double hueHSL = 0.0;
+		if (deltaMinMax == 0) { hueHSL = 0; }
+		else if (colorMax == redPrime) { hueHSL = 60*(((greenPrime - bluePrime)/deltaMinMax) % 6); }
+		else if (colorMax == greenPrime) { hueHSL = 60*(((bluePrime - redPrime)/deltaMinMax) + 2); }
+		else if (colorMax == bluePrime) { hueHSL = 60*(((redPrime - greenPrime)/deltaMinMax) + 4); }
+
+		double lightnessHSL = (colorMax + colorMin)/2;
+
+		double saturationHSL = 0.0;
+		if (deltaMinMax == 0) { saturationHSL = 0; }
+		else if (deltaMinMax != 0) { saturationHSL = deltaMinMax/(1 - Math.Abs((2*lightnessHSL)-1)); }
+
+		(double, double, double) valuesHSL = (hueHSL, saturationHSL, lightnessHSL);
+		return valuesHSL;
+	}
+
+	// HSV
 	public static (double, double, double) HSVtoRGB((double, double, double) inputHSV) {
 
 		double hueHSV = inputHSV.Item1;
