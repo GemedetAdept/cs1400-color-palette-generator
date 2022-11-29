@@ -2,25 +2,21 @@
 
 /* TODO
 - HEX
-	- HEX to CMYK
 	- HEX to HSL
 	- HEX to HSV
 	- HEX to RGB
 - HSL
-	- HSL to CMYK
 	- HSL to HEX
 	- HSL to HSV
 	- HSL to RGB
 - HSV
-	- HSV to CMYK
 	- HSV to HEX
 	- HSV to HSL
-	- HSV to RGB
+	[x] HSV to RGB
 - RGB
 	- RGB to HEX
-	- RGB to CMYK
 	- RGB to HSL
-	- RGB to HSV
+	[x] RGB to HSV
 */
 
 public class ConvertMode {
