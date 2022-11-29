@@ -50,7 +50,11 @@ public class ConvertMode {
 
 		double valueHSV = colorMax;
 
-		(double, double, double) valuesHSV = (hueHSV, saturationHSV, valueHSV);
+		(double, double, double) valuesHSV = (
+			Math.Round(hueHSV, 0), 
+			Math.Round(saturationHSV*Math.Pow(10,2), 0), 
+			Math.Round(valueHSV*Math.Pow(10,2), 0)
+		);
 		return valuesHSV;
 	}
 
@@ -82,16 +86,20 @@ public class ConvertMode {
 		if (deltaMinMax == 0) { saturationHSL = 0; }
 		else if (deltaMinMax != 0) { saturationHSL = deltaMinMax/(1 - Math.Abs((2*lightnessHSL)-1)); }
 
-		(double, double, double) valuesHSL = (hueHSL, saturationHSL, lightnessHSL);
+		(double, double, double) valuesHSL = (
+			Math.Round(hueHSL, 0), 
+			Math.Round(saturationHSL*Math.Pow(10,2), 0), 
+			Math.Round(lightnessHSL*Math.Pow(10,2), 0)
+		);
 		return valuesHSL;
 	}
 
 	// HSV
-	public static (double, double, double) HSVtoRGB((double, double, double) inputHSV) {
+	public static (int, int, int) HSVtoRGB((double, double, double) inputHSV) {
 
-		double hueHSV = inputHSV.Item1;
-		double saturationHSV = inputHSV.Item2;
-		double valueHSV = inputHSV.Item3;
+		double hueHSV = inputHSV.Item1*Math.Pow(10, -2);
+		double saturationHSV = inputHSV.Item2*Math.Pow(10, -2);
+		double valueHSV = inputHSV.Item3*Math.Pow(10, -2);
 
 		// In the formula, these are literally just the letters C, X, and m
 		// I now have a vendetta against mathmaticians for their dumb, single-letter variable names
@@ -111,7 +119,11 @@ public class ConvertMode {
 		double greenPrime = primesRGB.Item2;
 		double bluePrime = primesRGB.Item3;
 
-		(double, double, double) valuesRGB = ((redPrime+mValue)*255, (greenPrime+mValue)*255, (bluePrime+mValue)*255);
+		(int, int, int) valuesRGB = (
+			(int)((redPrime+mValue)*255), 
+			(int)((greenPrime+mValue)*255), 
+			(int)((bluePrime+mValue)*255)
+		);
 		return valuesRGB;
 	}
 }

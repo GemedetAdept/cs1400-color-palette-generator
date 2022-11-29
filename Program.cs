@@ -124,7 +124,7 @@ void ColorHarmonyMenu()
 
 // ColorHarmonyMenu();
 
-(double, double, double) inputRGB = (255, 255, 255);
+(int, int, int) inputRGB = (251, 188, 64);
 Console.WriteLine($"> RGB = {inputRGB}");
 Console.WriteLine("");
 
