@@ -189,6 +189,27 @@ public class ConvertMode {
 			else {isInvalid = false;}
 		}
 
+		if (colorType == "HSL") {
+
+			double hueHSL = colorValues.Item1;
+			double saturationHSL = colorValues.Item2;
+			double lightnessHSL = colorValues.Item3;
+
+			if (hueHSL < 0 || hueHSL > 360) {
+				Console.WriteLine($"HSV Hue value {hueHSL} is out-of-bounds (0–360).");
+				isInvalid = true;
+			}
+			if (saturationHSL < 0 || saturationHSL > 100) { 
+				Console.WriteLine($"HSL Saturation value {saturationHSL} is out-of-bounds (0–1)");
+				isInvalid = true;
+			}
+			if (lightnessHSL < 0 || lightnessHSL > 100) {
+				Console.WriteLine($"HSL Lightness value {lightnessHSL} is out-of-bounds (0–1)");
+				isInvalid = true;
+			}
+			else {isInvalid = false;}
+		}
+
 		return isInvalid;
 	}
 }
