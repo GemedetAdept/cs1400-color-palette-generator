@@ -125,3 +125,4 @@ using UserInput;
 
 Console.Clear();
 var inputHSL = (187, 43, 77);
+Console.WriteLine(ConvertMode.HSLtoHSV(inputHSL));
