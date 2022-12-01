@@ -2,7 +2,6 @@
 // By: Jasmine Carrasco, Chad Miller, and Pluto Zitek
 using UserInput;
 
-
 UserInput.UserInput.Input();
 
 // What are the color harmonies?

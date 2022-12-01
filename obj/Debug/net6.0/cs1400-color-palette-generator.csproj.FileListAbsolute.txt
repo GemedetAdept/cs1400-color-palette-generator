@@ -1,3 +1,20 @@
+<<<<<<< HEAD
+C:\Users\vivian.zitek\Programming\cSharp\cs1400-color-palette-generator\obj\Debug\net6.0\cs1400-color-palette-generator.csproj.AssemblyReference.cache
+C:\Users\vivian.zitek\Programming\cSharp\cs1400-color-palette-generator\obj\Debug\net6.0\cs1400-color-palette-generator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vivian.zitek\Programming\cSharp\cs1400-color-palette-generator\obj\Debug\net6.0\cs1400-color-palette-generator.AssemblyInfoInputs.cache
+C:\Users\vivian.zitek\Programming\cSharp\cs1400-color-palette-generator\obj\Debug\net6.0\cs1400-color-palette-generator.AssemblyInfo.cs
+C:\Users\vivian.zitek\Programming\cSharp\cs1400-color-palette-generator\obj\Debug\net6.0\cs1400-color-palette-generator.csproj.CoreCompileInputs.cache
+C:\Users\vivian.zitek\Programming\cSharp\cs1400-color-palette-generator\bin\Debug\net6.0\cs1400-color-palette-generator.exe
+C:\Users\vivian.zitek\Programming\cSharp\cs1400-color-palette-generator\bin\Debug\net6.0\cs1400-color-palette-generator.deps.json
+C:\Users\vivian.zitek\Programming\cSharp\cs1400-color-palette-generator\bin\Debug\net6.0\cs1400-color-palette-generator.runtimeconfig.json
+C:\Users\vivian.zitek\Programming\cSharp\cs1400-color-palette-generator\bin\Debug\net6.0\cs1400-color-palette-generator.dll
+C:\Users\vivian.zitek\Programming\cSharp\cs1400-color-palette-generator\bin\Debug\net6.0\ref\cs1400-color-palette-generator.dll
+C:\Users\vivian.zitek\Programming\cSharp\cs1400-color-palette-generator\bin\Debug\net6.0\cs1400-color-palette-generator.pdb
+C:\Users\vivian.zitek\Programming\cSharp\cs1400-color-palette-generator\obj\Debug\net6.0\cs1400-color-palette-generator.dll
+C:\Users\vivian.zitek\Programming\cSharp\cs1400-color-palette-generator\obj\Debug\net6.0\ref\cs1400-color-palette-generator.dll
+C:\Users\vivian.zitek\Programming\cSharp\cs1400-color-palette-generator\obj\Debug\net6.0\cs1400-color-palette-generator.pdb
+C:\Users\vivian.zitek\Programming\cSharp\cs1400-color-palette-generator\obj\Debug\net6.0\cs1400-color-palette-generator.genruntimeconfig.cache
+=======
 /Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/obj/Debug/net6.0/cs1400-color-palette-generator.csproj.AssemblyReference.cache
 /Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/obj/Debug/net6.0/cs1400-color-palette-generator.GeneratedMSBuildEditorConfig.editorconfig
 /Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/obj/Debug/net6.0/cs1400-color-palette-generator.AssemblyInfoInputs.cache
@@ -13,6 +30,7 @@
 /Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/obj/Debug/net6.0/cs1400-color-palette-generator.pdb
 /Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/obj/Debug/net6.0/cs1400-color-palette-generator.genruntimeconfig.cache
 /Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/obj/Debug/net6.0/ref/cs1400-color-palette-generator.dll
+>>>>>>> 2acab23db7b25c07588a19350bc39aab60459ac9
 C:\Users\chadh\code\cs1400-color-palette-generator\obj\Debug\net6.0\cs1400-color-palette-generator.csproj.AssemblyReference.cache
 C:\Users\chadh\code\cs1400-color-palette-generator\obj\Debug\net6.0\cs1400-color-palette-generator.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\chadh\code\cs1400-color-palette-generator\obj\Debug\net6.0\cs1400-color-palette-generator.AssemblyInfoInputs.cache
@@ -28,3 +46,4 @@ C:\Users\chadh\code\cs1400-color-palette-generator\bin\Debug\net6.0\cs1400-color
 C:\Users\chadh\code\cs1400-color-palette-generator\bin\Debug\net6.0\cs1400-color-palette-generator.pdb
 C:\Users\chadh\code\cs1400-color-palette-generator\obj\Debug\net6.0\cs1400-color-palette-generator.genruntimeconfig.cache
 C:\Users\chadh\code\cs1400-color-palette-generator\obj\Debug\net6.0\ref\cs1400-color-palette-generator.dll
+>>>>>>> 89b9ac7fd559cdf24ff0f64197544c67b11a1d6d
