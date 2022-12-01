@@ -22,7 +22,10 @@
 public class ConvertMode {
 
 	// RGB
-		// Given: R,G,B ∈ [0,1],
+		// Given: R,G,B ∈ [0,255],
+		// R',G',B' = R/255, G/255, B/255;
+
+		// Given: R',G',B' ∈ [0,1],
 		// Xmax = max(R,G,B)
 		// Xmin = min(R,G,B)
 		// Chroma = Xmax - Xmin
@@ -49,6 +52,16 @@ public class ConvertMode {
 		//		else, S = (Xmax - L)/min(L, 1-L);
 
 	public static (double, double, double) RGBtoHSV((double, double, double) inputRGB) {
+
+		double redPrimeRGB = inputRGB.Item1/255;
+		double greenPrimeRGB = inputRGB.Item2/255;
+		double bluePrimeRGB = inputRGB.Item3/255;
+
+		double hueHSV = -4.19;
+		double saturationHSV = -4.19;
+		double valueHSV = -4.19;
+
+
 	}
 
 	// HSV
@@ -58,9 +71,9 @@ public class ConvertMode {
 		double saturationHSV = inputHSV.Item2 * Math.Pow(10, -2);
 		double valueHSV = inputHSV.Item3 * Math.Pow(10, -2);
 
-		double hueHSL = -99.0;
-		double saturationHSL = -99.0;
-		double lightnessHSL = -99.0;
+		double hueHSL = -4.19;
+		double saturationHSL = -4.19;
+		double lightnessHSL = -4.19;
 
 		// Catch out-of-bounds // TODO: Send back to input menu.
 		var checkValuesHSV = (hueHSV, saturationHSV, valueHSV);
@@ -91,9 +104,9 @@ public class ConvertMode {
 		double saturationHSL = inputHSL.Item2 * Math.Pow(10, -2);
 		double lightnessHSL = inputHSL.Item3 * Math.Pow(10, -2);
 
-		double hueHSV = -99.0;
-		double saturationHSV = -99.0;
-		double valueHSV = -99.0;
+		double hueHSV = -4.19;
+		double saturationHSV = -4.19;
+		double valueHSV = -4.19;
 
 		// Catch out-of-bounds // TODO: Send back to input menu.
 		var checkValuesHSL = (hueHSL, saturationHSL, lightnessHSL);
@@ -122,6 +135,27 @@ public class ConvertMode {
 	public static bool CheckOutOfBounds((double, double, double) colorValues, string colorType) {
 
 		bool isInvalid = false;
+
+		if (colorType == "RGB") {
+
+			double redRGB = colorValues.Item1;
+			double greenRGB = colorValues.Item2;
+			double blueRGB = colorValues.Item3;
+
+			if (redRGB < 0 || redRGB > 255) {
+				Console.WriteLine($"RGB red value {redRGB} is out-of-bounds (0–255).");
+				isInvalid = true;
+			}
+			if (greenRGB < 0 || greenRGB > 255) {
+				Console.WriteLine($"RGB green value {greenRGB} is out-of-bounds (0–255).");
+				isInvalid = true;
+			}
+			if (blueRGB < 0 || blueRGB > 255) {
+				Console.WriteLine($"RGB blue value {blueRGB} is out-of-bounds (0–255).");
+				isInvalid = true;
+			}
+			else {isInvalid = false;}
+		}
 
 		if (colorType == "HSV") {
 
