@@ -15,7 +15,7 @@
 	- HSV to RGB
 - RGB
 	- RGB to HEX
-	- RGB to HSL
+	[x] RGB to HSL
 	[x] RGB to HSV
 */
 
@@ -100,6 +100,54 @@ public class ConvertMode {
 		return outputHSV;
 	}
 
+	public static (double, double, double) RGBtoHSL((double, double, double) inputRGB) {
+
+		double redPrimeRGB = inputRGB.Item1/255;
+		double greenPrimeRGB = inputRGB.Item2/255;
+		double bluePrimeRGB = inputRGB.Item3/255;
+
+		double hueHSL = -4.19;
+		double saturationHSL = -4.19;
+		double lightnessHSL = -4.19;
+
+		// Catch out-of-bounds // TODO: Send back to input menu.
+		bool outOfBounds = CheckOutOfBounds(inputRGB, "RGB");
+		if (outOfBounds == true) {Console.WriteLine("One or more invalid values."); Console.ReadKey();}
+
+		// RGB to HSV calculations
+		else {
+			List<double> checkMinMax = new List<double>();
+				checkMinMax.Add(redPrimeRGB);
+				checkMinMax.Add(greenPrimeRGB);
+				checkMinMax.Add(bluePrimeRGB);
+
+			double maxRGB = checkMinMax.OrderByDescending(x => x).First();
+			double minRGB = checkMinMax.OrderByDescending(x => x).Last();
+			double chroma = maxRGB - minRGB;
+
+			if (chroma == 0) {hueHSL = 0;}
+			else if (maxRGB == redPrimeRGB) {
+				// I do not know this is producing the inverse of what it should, but un-inverting it makes it work, so.
+				hueHSL = 60*(0 + (greenPrimeRGB - bluePrimeRGB)/chroma);
+				hueHSL = 360 + hueHSL;
+			}
+			else if (maxRGB == greenPrimeRGB) {hueHSL = 60*(2 + (bluePrimeRGB - redPrimeRGB)/chroma);}
+			else if (maxRGB == bluePrimeRGB) {hueHSL = 60*(4 + (redPrimeRGB - greenPrimeRGB)/chroma);}
+
+			lightnessHSL = (maxRGB + minRGB)/2;
+
+			if (lightnessHSL == 0 || lightnessHSL == 1) {saturationHSL = 0;}
+			else {saturationHSL = (maxRGB - lightnessHSL)/Math.Min(lightnessHSL, 1-lightnessHSL);}
+		}
+
+		hueHSL = Math.Round(hueHSL);
+		saturationHSL = Math.Round(saturationHSL*Math.Pow(10, 2));
+		lightnessHSL = Math.Round(lightnessHSL*Math.Pow(10, 2));
+
+		var outputHSL = (hueHSL, saturationHSL, lightnessHSL);
+		return outputHSL;
+	}
+
 	// HSV
 	public static (double, double, double) HSVtoHSL((double, double, double) inputHSV) {
 
@@ -126,7 +174,7 @@ public class ConvertMode {
 			else {saturationHSL = (valueHSV - lightnessHSL)/(Math.Min(lightnessHSL, 1-lightnessHSL));}
 		}
 
-		hueHSV = Math.Round(hueHSV);
+		hueHSL = Math.Round(hueHSL);
 		saturationHSL = Math.Round(saturationHSL*Math.Pow(10, 2));
 		lightnessHSL = Math.Round(lightnessHSL*Math.Pow(10, 2));
 
