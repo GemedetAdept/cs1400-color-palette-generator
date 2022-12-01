@@ -12,17 +12,17 @@
 - HSV
 	- HSV to HEX
 	[x] HSV to HSL
-	[~] HSV to RGB
+	- HSV to RGB
 - RGB
 	- RGB to HEX
 	- RGB to HSL
-	[~] RGB to HSV
+	- RGB to HSV
 */
 
 public class ConvertMode {
 
 	// RGB
-	
+
 
 	// HSV
 	public static (double, double, double) HSVtoHSL((double, double, double) inputHSV) {
@@ -141,5 +141,3 @@ public class ConvertMode {
 		return isInvalid;
 	}
 }
-
-// TODO: Implementation of conversions is slightly off and broken.
