@@ -33,9 +33,9 @@ public class ConvertMode {
 		// (HSV & HSL)
 		// For Hue (H):
 		//		if C == 0, H = 0;
-		//		if Xmax == R, H = 60*(0 + (G-B)/C);
-		//		if Xmax == G, H = 60*(2 + (B-R)/C);
-		//		if Xmax == B, H = 60*(4 + (R-G)/C);
+		//		if Xmax == R', H = 60*(0 + (G'-B')/C);
+		//		if Xmax == G', H = 60*(2 + (B'-R')/C);
+		//		if Xmax == B', H = 60*(4 + (R'-G')/C);
 
 		// (HSV only)
 		// For Value (V):
@@ -51,7 +51,7 @@ public class ConvertMode {
 		//		if L == 0 || 1, S = 0;
 		//		else, S = (Xmax - L)/min(L, 1-L);
 
-	public static void RGBtoHSV((double, double, double) inputRGB) {
+	public static (double, double, double) RGBtoHSV((double, double, double) inputRGB) {
 
 		double redPrimeRGB = inputRGB.Item1/255;
 		double greenPrimeRGB = inputRGB.Item2/255;
@@ -72,9 +72,26 @@ public class ConvertMode {
 				checkMinMax.Add(greenPrimeRGB);
 				checkMinMax.Add(bluePrimeRGB);
 
-				double maxRGB = checkMinMax.OrderByDescending(x => x).First();
-				double minRGB = checkMinMax.OrderByDescending(x => x).Last();
+			double maxRGB = checkMinMax.OrderByDescending(x => x).First();
+			double minRGB = checkMinMax.OrderByDescending(x => x).Last();
+			double chroma = maxRGB - minRGB;
+
+			if (chroma == 0) {hueHSV = 0;}
+			else if (maxRGB == redPrimeRGB) {hueHSV = 60*(0 + (greenPrimeRGB - bluePrimeRGB)/chroma);}
+			else if (maxRGB == greenPrimeRGB) {hueHSV = 60*(2 + (bluePrimeRGB - redPrimeRGB)/chroma);}
+			else if (maxRGB == bluePrimeRGB) {hueHSV = 60*(4 + (redPrimeRGB - greenPrimeRGB)/chroma);}
+
+			valueHSV = maxRGB;
+
+			if (valueHSV == 0) {saturationHSV = 0;}
+			else {saturationHSV = chroma/valueHSV;}
 		}
+
+		saturationHSV = Math.Round(saturationHSV*Math.Pow(10, 2));
+		valueHSV = Math.Round(valueHSV*Math.Pow(10, 2));
+
+		var outputHSV = (hueHSV, saturationHSV, valueHSV);
+		return outputHSV;
 	}
 
 	// HSV

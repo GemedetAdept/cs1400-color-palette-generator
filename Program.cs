@@ -125,4 +125,4 @@ using UserInput;
 
 Console.Clear();
 var inputRGB = (187, 43, 77);
-ConvertMode.RGBtoHSV(inputRGB);
+Console.WriteLine(ConvertMode.RGBtoHSV(inputRGB));
