@@ -8,7 +8,7 @@
 - HSL
 	- HSL to HEX
 	[x] HSL to HSV
-	- HSL to RGB
+	[x] HSL to RGB
 - HSV
 	- HSV to HEX
 	[x] HSV to HSL
