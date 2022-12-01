@@ -11,7 +11,7 @@
 	- HSL to RGB
 - HSV
 	- HSV to HEX
-	- HSV to HSL
+	[x] HSV to HSL
 	[~] HSV to RGB
 - RGB
 	- RGB to HEX
@@ -127,11 +127,11 @@ public class ConvertMode {
 		return valuesRGB;
 	}
 
-	public static void HSVtoHSL((double, double, double) inputHSV) {
+	public static (double, double, double) HSVtoHSL((double, double, double) inputHSV) {
 
 		double hueHSV = inputHSV.Item1;
-		double saturationHSV = inputHSV.Item2;
-		double valueHSV = inputHSV.Item3;
+		double saturationHSV = inputHSV.Item2 * Math.Pow(10, -2);
+		double valueHSV = inputHSV.Item3 * Math.Pow(10, -2);
 
 		double hueHSL = -99.0;
 		double saturationHSL = -99.0;
@@ -143,11 +143,11 @@ public class ConvertMode {
 			Console.WriteLine($"HSV Hue value {hueHSV} is out-of-bounds (0–360).");
 			outOfBounds = true;
 		}
-		if (saturationHSV < 0 || saturationHSV > 1) { 
+		if (saturationHSV < 0 || saturationHSV > 100) { 
 			Console.WriteLine($"HSV Saturation value {saturationHSV} is out-of-bounds (0–1)");
 			outOfBounds = true;
 		}
-		if (valueHSV < 0 || valueHSV > 1) {
+		if (valueHSV < 0 || valueHSV > 100) {
 			Console.WriteLine($"HSV Value value {valueHSV} is out-of-bounds (0–1)");
 			outOfBounds = true;
 		}
@@ -157,9 +157,18 @@ public class ConvertMode {
 
 		// HSV to HSL calculations
 		else {
-			
-			
+			hueHSL = hueHSV;
+			lightnessHSL = valueHSV * (1 - (saturationHSV/2));
+
+			if (lightnessHSL == 0 || lightnessHSL == 1) {saturationHSL = 0;}
+			else {saturationHSL = (valueHSV - lightnessHSL)/(Math.Min(lightnessHSL, 1-lightnessHSL));}
 		}
+
+		saturationHSL = Math.Round(saturationHSL*Math.Pow(10, 2));
+		lightnessHSL = Math.Round(lightnessHSL*Math.Pow(10, 2));
+
+		var outputHSL = (hueHSL, saturationHSL, lightnessHSL);
+		return outputHSL;
 	}
 }
 

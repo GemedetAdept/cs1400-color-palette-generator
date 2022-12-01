@@ -2,7 +2,6 @@
 // By: Jasmine Carrasco, Chad Miller, and Pluto Zitek
 using UserInput;
 
-
 // UserInput.UserInput.Input();
 
 
@@ -124,6 +123,6 @@ using UserInput;
 
 // ColorHarmonyMenu();
 
-var inputHSV = (260, 35, 97);
-// ConvertMode.HSVtoHSL(inputHSV)
-Console.WriteLine({inputHSV.Item1);
+var inputHSV = (187, 23, 87);
+(double, double, double) HSVtoHSL = ConvertMode.HSVtoHSL(inputHSV);
+Console.WriteLine(HSVtoHSL);
