@@ -12,7 +12,7 @@
 - HSV
 	- HSV to HEX
 	[x] HSV to HSL
-	- HSV to RGB
+	[x] HSV to RGB
 - RGB
 	- RGB to HEX
 	[x] RGB to HSL
@@ -150,6 +150,44 @@ public class ConvertMode {
 		var outputHSL = (hueHSL, saturationHSL, lightnessHSL);
 		return outputHSL;
 	}
+	public static (double, double, double) HSVtoRGB((double, double, double) inputHSV) {
+
+		double hueHSV = inputHSV.Item1;
+		double saturationHSV = inputHSV.Item2 * Math.Pow(10, -2);
+		double valueHSV = inputHSV.Item3 * Math.Pow(10, -2);
+
+		double redRGB = -4.19;
+		double greenRGB = -4.19;
+		double blueRGB = -4.19;		
+
+		// Catch out-of-bounds // TODO: Send back to input menu.
+		var checkValuesHSV = (hueHSV, saturationHSV, valueHSV);
+		bool outOfBounds = CheckOutOfBounds(checkValuesHSV, "HSV");
+		if (outOfBounds == true) {Console.WriteLine("One or more invalid values."); Console.ReadKey();}
+
+		// HSV to RGB calculations
+			// Alternative HSV to RGB from https://en.wikipedia.org/wiki/HSL_and_HSV#HSV_to_RGB_alternative
+			// Given: H ∈ [0,360], S ∈ [0,1], V ∈ [0,1],
+			// ⨍(n) = V - V*S* max(0, min(k, 4-k, 1))
+			//		Where k,n ∈ R≥₀, and:
+			//			k = (n + (H/60)) % 6
+			// (R,G,B) = (⨍(5), ⨍(3), ⨍(1))
+		else {
+			Func<double, double> valueK = n => (n + hueHSV/60)%6;
+			Func<double, double> altConvert = n => valueHSV-valueHSV*saturationHSV * Math.Max(0, Math.Min(valueK(n), Math.Min(4-valueK(n), 1)));
+
+			redRGB = altConvert(5);
+			greenRGB = altConvert(3);
+			blueRGB = altConvert(1);
+		}
+
+		redRGB = Math.Round(redRGB*255);
+		greenRGB = Math.Round(greenRGB*255);
+		blueRGB = Math.Round(blueRGB*255);
+
+		var outputRGB = (redRGB, greenRGB, blueRGB);
+		return outputRGB;
+	}
 
 	// HSL
 
@@ -172,15 +210,14 @@ public class ConvertMode {
 			// Alternative HSL to RGB from https://en.wikipedia.org/wiki/HSL_and_HSV#HSL_to_RGB_alternative
 			// Given: H ∈ [0,360], S ∈ [0,1], and L ∈ [0,1],
 			// ⨍(n) = L - a * max(-1, min(k-3, 9-k, 1))
-			//		Where k,n ∈ R≥₀, where:
-			//				k = (n + (H/30)) % 12
-			//				a = S*min(L, 1-L)
+			//		Where k,n ∈ R≥₀, and:
+			//			k = (n + (H/30)) % 12
+			//			a = S*min(L, 1-L)
 			// (R,G,B) = (⨍(0), ⨍(8), ⨍(4))
 		else {
-
 			double valueA = saturationHSL * Math.Min(lightnessHSL, 1-lightnessHSL);
-			Func<double, double> valueK = x => (x + hueHSL/30)%12;
-			Func<double, double> altConvert = x => lightnessHSL - valueA * Math.Max(-1, Math.Min(valueK(x)-3, Math.Min(9-valueK(x), 1)));
+			Func<double, double> valueK = n => (n + hueHSL/30)%12;
+			Func<double, double> altConvert = n => lightnessHSL-valueA * Math.Max(-1, Math.Min(valueK(n)-3, Math.Min(9-valueK(n), 1)));
 			
 			redRGB = altConvert(0);
 			greenRGB = altConvert(8);
