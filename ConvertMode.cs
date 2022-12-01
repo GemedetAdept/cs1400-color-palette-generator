@@ -22,7 +22,34 @@
 public class ConvertMode {
 
 	// RGB
+		// Given: R,G,B ∈ [0,1],
+		// Xmax = max(R,G,B)
+		// Xmin = min(R,G,B)
+		// Chroma = Xmax - Xmin
 
+		// (HSV & HSL)
+		// For Hue (H):
+		//		if C == 0, H = 0;
+		//		if Xmax == R, H = 60*(0 + (G-B)/C);
+		//		if Xmax == G, H = 60*(2 + (B-R)/C);
+		//		if Xmax == B, H = 60*(4 + (R-G)/C);
+
+		// (HSV only)
+		// For Value (V):
+		//		Value = Xmax;
+		// For Saturation (S):
+		//		if V == 0, S = 0;
+		//		else, S = C/V;
+
+		// (HSL only)
+		// For Lightness (L):
+		//		L = (Xmax + Xmin)/2;
+		// For Saturation (S):
+		//		if L == 0 || 1, S = 0;
+		//		else, S = (Xmax - L)/min(L, 1-L);
+
+	public static (double, double, double) RGBtoHSV((double, double, double) inputRGB) {
+	}
 
 	// HSV
 	public static (double, double, double) HSVtoHSL((double, double, double) inputHSV) {
