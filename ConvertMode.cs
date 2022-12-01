@@ -16,7 +16,7 @@
 - RGB
 	- RGB to HEX
 	- RGB to HSL
-	- RGB to HSV
+	[x] RGB to HSV
 */
 
 public class ConvertMode {
@@ -34,6 +34,7 @@ public class ConvertMode {
 		// For Hue (H):
 		//		if C == 0, H = 0;
 		//		if Xmax == R', H = 60*(0 + (G'-B')/C);
+		//			*** Add 360 to H if Xmax == R ***
 		//		if Xmax == G', H = 60*(2 + (B'-R')/C);
 		//		if Xmax == B', H = 60*(4 + (R'-G')/C);
 
