@@ -95,7 +95,7 @@ public class ConvertMode {
 	}
 
 	// HSV
-	public static (int, int, int) HSVtoRGB((double, double, double) inputHSV) {
+	public static (double, double, double) HSVtoRGB((double, double, double) inputHSV) {
 
 		double hueHSV = inputHSV.Item1*Math.Pow(10, -2);
 		double saturationHSV = inputHSV.Item2*Math.Pow(10, -2);
@@ -119,7 +119,7 @@ public class ConvertMode {
 		double greenPrime = primesRGB.Item2;
 		double bluePrime = primesRGB.Item3;
 
-		(int, int, int) valuesRGB = (
+		(double, double, double) valuesRGB = (
 			(int)((redPrime+mValue)*255), 
 			(int)((greenPrime+mValue)*255), 
 			(int)((bluePrime+mValue)*255)
@@ -137,22 +137,9 @@ public class ConvertMode {
 		double saturationHSL = -99.0;
 		double lightnessHSL = -99.0;
 
-		// Catch out-of-bounds
-		bool outOfBounds = false;
-		if (hueHSV < 0 || hueHSV > 360) {
-			Console.WriteLine($"HSV Hue value {hueHSV} is out-of-bounds (0–360).");
-			outOfBounds = true;
-		}
-		if (saturationHSV < 0 || saturationHSV > 100) { 
-			Console.WriteLine($"HSV Saturation value {saturationHSV} is out-of-bounds (0–1)");
-			outOfBounds = true;
-		}
-		if (valueHSV < 0 || valueHSV > 100) {
-			Console.WriteLine($"HSV Value value {valueHSV} is out-of-bounds (0–1)");
-			outOfBounds = true;
-		}
-
-		// TODO: Send back to input menu.
+		// Catch out-of-bounds // TODO: Send back to input menu.
+		var checkValuesHSV = (hueHSV, saturationHSV, valueHSV);
+		bool outOfBounds = CheckOutOfBounds(checkValuesHSV, "HSV");
 		if (outOfBounds == true) { Console.WriteLine("One or more invalid values."); Console.ReadKey(); }
 
 		// HSV to HSL calculations
@@ -169,6 +156,40 @@ public class ConvertMode {
 
 		var outputHSL = (hueHSL, saturationHSL, lightnessHSL);
 		return outputHSL;
+	}
+
+	// HSL
+	public static void HSLtoHSV((double, double, double) inputHSL) {
+
+
+	}
+
+	public static bool CheckOutOfBounds((double, double, double) colorValues, string colorType) {
+
+		bool isInvalid = false;
+
+		if (colorType == "HSV") {
+
+			double hueHSV = colorValues.Item1;
+			double saturationHSV = colorValues.Item2;
+			double valueHSV = colorValues.Item3;
+
+			if (hueHSV < 0 || hueHSV > 360) {
+				Console.WriteLine($"HSV Hue value {hueHSV} is out-of-bounds (0–360).");
+				isInvalid = true;
+			}
+			if (saturationHSV < 0 || saturationHSV > 100) { 
+				Console.WriteLine($"HSV Saturation value {saturationHSV} is out-of-bounds (0–1)");
+				isInvalid = true;
+			}
+			if (valueHSV < 0 || valueHSV > 100) {
+				Console.WriteLine($"HSV Value value {valueHSV} is out-of-bounds (0–1)");
+				isInvalid = true;
+			}
+			else {isInvalid = false;}
+		}
+
+		return isInvalid;
 	}
 }
 
