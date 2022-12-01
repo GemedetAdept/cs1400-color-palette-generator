@@ -124,5 +124,5 @@ using UserInput;
 // ColorHarmonyMenu();
 
 Console.Clear();
-var inputHSL = (187, 43, 77);
-Console.WriteLine(ConvertMode.HSLtoHSV(inputHSL));
+var inputRGB = (187, 43, 77);
+ConvertMode.RGBtoHSV(inputRGB);

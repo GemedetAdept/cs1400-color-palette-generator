@@ -51,7 +51,7 @@ public class ConvertMode {
 		//		if L == 0 || 1, S = 0;
 		//		else, S = (Xmax - L)/min(L, 1-L);
 
-	public static (double, double, double) RGBtoHSV((double, double, double) inputRGB) {
+	public static void RGBtoHSV((double, double, double) inputRGB) {
 
 		double redPrimeRGB = inputRGB.Item1/255;
 		double greenPrimeRGB = inputRGB.Item2/255;
@@ -61,7 +61,20 @@ public class ConvertMode {
 		double saturationHSV = -4.19;
 		double valueHSV = -4.19;
 
+		// Catch out-of-bounds // TODO: Send back to input menu.
+		bool outOfBounds = CheckOutOfBounds(inputRGB, "RGB");
+		if (outOfBounds == true) {Console.WriteLine("One or more invalid values."); Console.ReadKey();}
 
+		// RGB to HSV calculations
+		else {
+			List<double> checkMinMax = new List<double>();
+				checkMinMax.Add(redPrimeRGB);
+				checkMinMax.Add(greenPrimeRGB);
+				checkMinMax.Add(bluePrimeRGB);
+
+				double maxRGB = checkMinMax.OrderByDescending(x => x).First();
+				double minRGB = checkMinMax.OrderByDescending(x => x).Last();
+		}
 	}
 
 	// HSV
@@ -78,7 +91,7 @@ public class ConvertMode {
 		// Catch out-of-bounds // TODO: Send back to input menu.
 		var checkValuesHSV = (hueHSV, saturationHSV, valueHSV);
 		bool outOfBounds = CheckOutOfBounds(checkValuesHSV, "HSV");
-		if (outOfBounds == true) { Console.WriteLine("One or more invalid values."); Console.ReadKey(); }
+		if (outOfBounds == true) {Console.WriteLine("One or more invalid values."); Console.ReadKey();}
 
 		// HSV to HSL calculations
 		else {
@@ -111,7 +124,7 @@ public class ConvertMode {
 		// Catch out-of-bounds // TODO: Send back to input menu.
 		var checkValuesHSL = (hueHSL, saturationHSL, lightnessHSL);
 		bool outOfBounds = CheckOutOfBounds(checkValuesHSL, "HSV");
-		if (outOfBounds == true) { Console.WriteLine("One or more invalid values."); Console.ReadKey(); }
+		if (outOfBounds == true) {Console.WriteLine("One or more invalid values."); Console.ReadKey();}
 
 		// HSL to HSV calculations
 		else {
