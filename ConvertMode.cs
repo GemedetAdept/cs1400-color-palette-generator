@@ -7,7 +7,7 @@
 	- HEX to RGB
 - HSL
 	- HSL to HEX
-	- HSL to HSV
+	[x] HSL to HSV
 	- HSL to RGB
 - HSV
 	- HSV to HEX
@@ -193,6 +193,7 @@ public class ConvertMode {
 
 	}
 
+	// Check Out-of-Bounds
 	public static bool CheckOutOfBounds((double, double, double) colorValues, string colorType) {
 
 		bool isInvalid = false;
