@@ -76,17 +76,22 @@ public class ConvertMode {
 			double minRGB = checkMinMax.OrderByDescending(x => x).Last();
 			double chroma = maxRGB - minRGB;
 
-			if (chroma == 0) {hueHSV = 0;}
-			else if (maxRGB == redPrimeRGB) {hueHSV = 60*(0 + (greenPrimeRGB - bluePrimeRGB)/chroma);}
-			else if (maxRGB == greenPrimeRGB) {hueHSV = 60*(2 + (bluePrimeRGB - redPrimeRGB)/chroma);}
-			else if (maxRGB == bluePrimeRGB) {hueHSV = 60*(4 + (redPrimeRGB - greenPrimeRGB)/chroma);}
-
 			valueHSV = maxRGB;
+
+			if (chroma == 0) {hueHSV = 0;}
+			else if (valueHSV == redPrimeRGB) {
+				// I do not know this is producing the inverse of what it should, but un-inverting it makes it work, so.
+				hueHSV = 60*(0 + (greenPrimeRGB - bluePrimeRGB)/chroma);
+				hueHSV = 360 + hueHSV;
+			}
+			else if (valueHSV == greenPrimeRGB) {hueHSV = 60*(2 + (bluePrimeRGB - redPrimeRGB)/chroma);}
+			else if (valueHSV == bluePrimeRGB) {hueHSV = 60*(4 + (redPrimeRGB - greenPrimeRGB)/chroma);}
 
 			if (valueHSV == 0) {saturationHSV = 0;}
 			else {saturationHSV = chroma/valueHSV;}
 		}
 
+		hueHSV = Math.Round(hueHSV);
 		saturationHSV = Math.Round(saturationHSV*Math.Pow(10, 2));
 		valueHSV = Math.Round(valueHSV*Math.Pow(10, 2));
 
@@ -120,6 +125,7 @@ public class ConvertMode {
 			else {saturationHSL = (valueHSV - lightnessHSL)/(Math.Min(lightnessHSL, 1-lightnessHSL));}
 		}
 
+		hueHSV = Math.Round(hueHSV);
 		saturationHSL = Math.Round(saturationHSL*Math.Pow(10, 2));
 		lightnessHSL = Math.Round(lightnessHSL*Math.Pow(10, 2));
 
@@ -153,6 +159,7 @@ public class ConvertMode {
 			else {saturationHSV = 2*(1-(lightnessHSL/valueHSV));} 
 		}
 
+		hueHSV = Math.Round(hueHSV);
 		saturationHSV = Math.Round(saturationHSV*Math.Pow(10, 2));
 		valueHSV = Math.Round(valueHSV*Math.Pow(10, 2));
 
