@@ -12,11 +12,11 @@
 - HSV
 	- HSV to HEX
 	- HSV to HSL
-	[x] HSV to RGB
+	[~] HSV to RGB
 - RGB
 	- RGB to HEX
 	- RGB to HSL
-	[x] RGB to HSV
+	[~] RGB to HSV
 */
 
 public class ConvertMode {
@@ -126,4 +126,41 @@ public class ConvertMode {
 		);
 		return valuesRGB;
 	}
+
+	public static void HSVtoHSL((double, double, double) inputHSV) {
+
+		double hueHSV = inputHSV.Item1;
+		double saturationHSV = inputHSV.Item2;
+		double valueHSV = inputHSV.Item3;
+
+		double hueHSL = -99.0;
+		double saturationHSL = -99.0;
+		double lightnessHSL = -99.0;
+
+		// Catch out-of-bounds
+		bool outOfBounds = false;
+		if (hueHSV < 0 || hueHSV > 360) {
+			Console.WriteLine($"HSV Hue value {hueHSV} is out-of-bounds (0–360).");
+			outOfBounds = true;
+		}
+		if (saturationHSV < 0 || saturationHSV > 1) { 
+			Console.WriteLine($"HSV Saturation value {saturationHSV} is out-of-bounds (0–1)");
+			outOfBounds = true;
+		}
+		if (valueHSV < 0 || valueHSV > 1) {
+			Console.WriteLine($"HSV Value value {valueHSV} is out-of-bounds (0–1)");
+			outOfBounds = true;
+		}
+
+		// TODO: Send back to input menu.
+		if (outOfBounds == true) { Console.WriteLine("One or more invalid values."); Console.ReadKey(); }
+
+		// HSV to HSL calculations
+		else {
+			
+			
+		}
+	}
 }
+
+// TODO: Implementation of conversions is slightly off and broken.
