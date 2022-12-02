@@ -51,7 +51,7 @@ public class ConvertMode {
 
 			if (chroma == 0) {hueHSV = 0;}
 			else if (valueHSV == redPrimeRGB) {
-				// I do not know this is producing the inverse of what it should, but un-inverting it makes it work, so.
+				// I do not know why this is producing the inverse of what it should, but un-inverting it makes it work, so.
 				hueHSV = 60*(0 + (greenPrimeRGB - bluePrimeRGB)/chroma);
 				hueHSV = 360 + hueHSV;
 			}
@@ -96,7 +96,7 @@ public class ConvertMode {
 
 			if (chroma == 0) {hueHSL = 0;}
 			else if (maxRGB == redPrimeRGB) {
-				// I do not know this is producing the inverse of what it should, but un-inverting it makes it work, so.
+				// I do not know why this is producing the inverse of what it should, but un-inverting it makes it work, so.
 				hueHSL = 60*(0 + (greenPrimeRGB - bluePrimeRGB)/chroma);
 				hueHSL = 360 + hueHSL;
 			}
