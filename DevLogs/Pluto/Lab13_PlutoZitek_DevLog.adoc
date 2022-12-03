@@ -20,6 +20,8 @@ Pluto Zitek <https://github.com/GemedetAdept>
 ** [ ] RGB
 *** [ ] RGB to HEX
 * [ ] Implement ValueDeviation class for controlled randomization of output colors
+** [x] Implement custom, adjustable logistic function
+*** [x] Method to catch invalid floor and ceiling values
 ** [ ] Implement ValueDeviation methods
 *** [ ] Hue, HSV
 *** [ ] Hue, HSL
@@ -30,8 +32,7 @@ Pluto Zitek <https://github.com/GemedetAdept>
 == Implementation and Progress
 ---
 
-=== Scope of ValueDeviation()
-
+=== Challenges With Color Space Geometry
 Because RGB and HEX both contain three values, each with the same range stem:[(\mathit{R,G,B}) \in \mathbb{R} \text{[0,1\]}] and stem:[(\mathit{H_R,H_G,H_B}) \in \mathbb{R} \text{[0$_{10}$,1$_{10}$\]}], which are all congruent, they can be geometrically visualized as _cubes_ (Fig. 1).
 
 HSV and HSL, albeit also containing three values, contain two distinct ranges and value types. The hue (stem:[\mathit{H_V,H_L}]) has a different range and is measured in degrees: stem:[\mathit{H_V,H_L} \in \mathbb{R} \text{[0$^{\circ}$,360$^{\circ}$\]}]. This is distinct from the shared range and value type of saturation (stem:[\mathit{S_V,S_L}]), value (stem:[\mathit{V}]), and lightness (stem:[\mathit{L}]): stem:[\mathit{S_V,S_L} \in \mathbb{R} \text{[0,1\]}], stem:[\mathit{V} \in \mathbb{R} \text{[0,1\]}], stem:[\mathit{L} \in \mathbb{R} \text{[0,1\]}]. This combination of dislike ranges and types means that both HSV and HSL are visualized as _cylinders_ (Fig. 2). 
