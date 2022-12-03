@@ -9,6 +9,7 @@
 // ColorHarmony.ColorHarmonyInfo();
 // ColorHarmony.Menu();
 
+Console.Clear();
 // (double x, double xOrig, double yOrig, double K, double A, double m, double n)
 Console.WriteLine(
 	ValueDeviation.ClampByLogistic(20.0, 0.0, 0.0, 360, 30, 0.21, 0.27)

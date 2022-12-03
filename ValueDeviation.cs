@@ -1,8 +1,8 @@
 public class ValueDeviation {
 
-	// An implementation of my custom logistic function (https://www.geogebra.org/classic/vmd7cvjj)
-	// Constructed from (https://en.wikipedia.org/wiki/Logistic_function), based on: Verhulst, Pierre-François (1838), Correspondance Mathématique et Physique. Vol. 10: p. 116
 	public static double ClampByLogistic(double x, double xOrig, double yOrig, double K, double A, double m, double n) {
+		// An implementation of a logistic function I wrote (https://www.geogebra.org/classic/vmd7cvjj)
+		// Constructed from (https://en.wikipedia.org/wiki/Logistic_function), based on: Verhulst, Pierre-François (1838), Correspondance Mathématique et Physique. Vol. 10: p. 116
 
 		// Given:
 		//	x :: Input; value to be fitted to function, used as a linear coordinate with a y value of 0
@@ -16,7 +16,64 @@ public class ValueDeviation {
 		// ⨍(x) = y₀+((K-A)/(1 + e^(-m*x*n-x₀))) + A
 
 		double logisticOutput = 0.0;
-		logisticOutput = yOrig + ((K-A)/(1 + Math.Pow(Math.E, -m*x*n-xOrig))) + A;
+
+		bool boundsAreValid = CheckLogisticBounds("RGB", "red", K, A);
+		if (boundsAreValid == true) {
+
+			logisticOutput = yOrig + ((K-A)/(1 + Math.Pow(Math.E, -m*x*n-xOrig))) + A;
+			return logisticOutput;
+		}
+
 		return logisticOutput;
+	}
+
+	public static bool CheckLogisticBounds(string colorType, string subValue, double ceiling, double floor) {
+
+		double minFloor = -4.19;
+		double maxCeiling = -4.19;
+		string errorType = "[Error: Invalid Range]";
+		string errorTypeTab = "                      ";
+		Action InvalidRange = () => Console.WriteLine($"{errorType} Floor-Ceiling range '[{floor}, {ceiling}]' for value '{subValue}' of color type '{colorType}' is invalid.");
+		Action GiveValidRange = () => Console.WriteLine($"{errorTypeTab} Floor-Ceiling range must be within [{minFloor}, {maxCeiling}].");
+
+		if (colorType == "HEX") {
+
+			minFloor = 0;
+			maxCeiling = 255;
+
+			if (ceiling > 255 || floor < 0) {InvalidRange(); GiveValidRange(); return false;}
+			else return true;
+		}
+
+		if (colorType == "RGB") {
+
+			minFloor = 0;
+			maxCeiling = 255;
+
+			if (ceiling > 255 || floor < 0) {InvalidRange(); GiveValidRange(); return false;}
+			else return true;
+		}
+
+		if (colorType == "HSV") {
+
+			// For hue only
+			minFloor = 0;
+			maxCeiling = 360;
+
+			if (ceiling > 255 || floor < 0) {InvalidRange(); GiveValidRange(); return false;}
+			else return true;
+		}
+
+		if (colorType == "HSL") {
+
+			// For hue only
+			minFloor = 0;
+			maxCeiling = 360;
+
+			if (ceiling > 255 || floor < 0) {InvalidRange(); GiveValidRange(); return false;}
+			else return true;
+		}
+
+		else return true;
 	}
 }
