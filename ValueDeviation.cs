@@ -1,8 +1,9 @@
 public class ValueDeviation {
 
 	public static double ClampByLogistic(double x, double xOrig, double yOrig, double K, double A, double m, double n) {
-		// An implementation of a logistic function I wrote (https://www.geogebra.org/classic/vmd7cvjj)
-		// Constructed from (https://en.wikipedia.org/wiki/Logistic_function), based on: Verhulst, Pierre-François (1838), Correspondance Mathématique et Physique. Vol. 10: p. 116
+		// Implementation of an adjustable logistic function I wrote (https://www.geogebra.org/classic/vmd7cvjj)
+		// Base formula referenced from (https://en.wikipedia.org/wiki/Logistic_function), 
+		// Originally from: Verhulst, Pierre-François (1838), Correspondance Mathématique et Physique. Vol. 10: p. 116
 
 		// Given:
 		//	x :: Input; value to be fitted to function, used as a linear coordinate with a y value of 0
