@@ -1,9 +1,11 @@
+
 namespace UserInput
 {
     internal class UserInput
     {
         public static void Input()
         {
+          
             string userInput = GetUserInput("Do you want to input color for Hexadecimal, RGB, HSL, or HSV? ");
 
 
@@ -71,7 +73,7 @@ namespace UserInput
             }
         }
 
-       public static int GetHSL(string prompt)
+        public static int GetHSL(string prompt)
         {
             while (true)
             {
@@ -91,7 +93,7 @@ namespace UserInput
             }
         }
 
-       public static int GetRGB(string prompt)
+        public static int GetRGB(string prompt)
         {
             while (true)
             {
@@ -111,7 +113,7 @@ namespace UserInput
             }
         }
 
-       public static string GetUserInput(string prompt)
+        public static string GetUserInput(string prompt)
         {
             while (true)
             {
@@ -132,7 +134,7 @@ namespace UserInput
             }
         }
 
-      public static bool IsHexadecimal(string hexadecimal)
+        public static bool IsHexadecimal(string hexadecimal)
         {
             char[] valid = new char[16] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
             foreach (char letter in hexadecimal)
@@ -151,7 +153,7 @@ namespace UserInput
             return true;
         }
 
-       public static int ConvertToInteger(string hexadecimal)
+        public static int ConvertToInteger(string hexadecimal)
         {
             List<int> values = new List<int>();
             double value = 0;
@@ -198,6 +200,14 @@ namespace UserInput
                 y++;
             }
             return Convert.ToInt32(value);
+        }
+
+        public static string ConvertToHexadecimal(int integer)
+        {
+            integer = int.Parse(Console.ReadLine());
+            string hexadecimal = integer.ToString("X");
+            Console.WriteLine(hexadecimal);
+            return hexadecimal;
         }
     }
 }
