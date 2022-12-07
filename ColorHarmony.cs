@@ -7,13 +7,13 @@ public static class ColorHarmony
 
     public static void complemenatryMeaning()
     {
-        Console.WriteLine("The color harmony Complmentary, is when pairs of colors are  positioned on opposite ends of the color wheel (or color circle), and they can be either primary, secondary, or tertiary colors.");
+        Console.WriteLine("The color harmony Complmentary, is when pairs of colors are positioned on opposite ends of the color wheel (or color circle), and they can be either primary, secondary, or tertiary colors.");
 
     }
 
     public static void SplitComplementarymeaning()
     {
-        Console.WriteLine(" The color harmony Split Complemnatry is deifined as one key color and two colors adjacent to that key colors complement. ");
+        Console.WriteLine("The color harmony Split Complemnatry is deifined as one key color and two colors adjacent to that key colors complement.");
     }
 
     public static void Triadicmeaning()
@@ -24,24 +24,24 @@ public static class ColorHarmony
 
     public static void Tetradicmeaning()
     {
-        Console.WriteLine(" The color harmony Tetradic is when four individual colors: a key color and three more colors, are all equidistant from the key color on the color wheel.");
+        Console.WriteLine("The color harmony Tetradic is when four individual colors: a key color and three more colors, are all equidistant from the key color on the color wheel.");
     }
 
 
     public static void Squaremeaning()
     {
-        Console.WriteLine(" The Square color harmomny consist of four colors spaced evenly around the color wheel. To create a square color palette, pick the key color to start with. Then identify the other colors that are equidistant from that color. You’ll basically end up with two complementary pairs.");
+        Console.WriteLine("The Square color harmomny consist of four colors spaced evenly around the color wheel. To create a square color palette, pick the key color to start with. Then identify the other colors that are equidistant from that color. You’ll basically end up with two complementary pairs.");
     }
 
     public static void Monochromaticmeaning()
     {
-        Console.WriteLine(" The Monochromatic color harmony is defined as a single base hue and extend the color scheme by using different shades, tones, and tints of that color family.");
+        Console.WriteLine("The Monochromatic color harmony is defined as a single base hue and extend the color scheme by using different shades, tones, and tints of that color family.");
     }
 
 
     public static void Analogousmeaning()
     {
-        Console.WriteLine(" The analogous color harmony is defined as three hues, all positioned next to each other on the color wheel. ");
+        Console.WriteLine("The analogous color harmony is defined as three hues, all positioned next to each other on the color wheel. ");
     }
 
     public static void ColorHarmonyInfo()
@@ -90,7 +90,7 @@ public static class ColorHarmony
 
 
 
-    public static  (int,int) Complementary()
+    public static (int, int) Complementary()
     {
         Console.WriteLine("Enter the value of your number to get a complemntary harmony.");
         int number = int.Parse(Console.ReadLine());
@@ -99,12 +99,12 @@ public static class ColorHarmony
 
         Console.WriteLine($" Here is your complemtary harmony: {number}, {complement}");
         Console.ReadKey();
-        (int,int) complements = (number, complement);
+        (int, int) complements = (number, complement);
         return complements;
     }
 
 
-    public static  (int,int, int)SplitComplementary()
+    public static (int, int, int) SplitComplementary()
     {
         Console.WriteLine("Enter the value of your number to get a  slplit complemntary harmony.");
         int number = int.Parse(Console.ReadLine());
@@ -114,13 +114,13 @@ public static class ColorHarmony
         if (splitcomplement2 > 360) splitcomplement2 = splitcomplement2 - 360;
         Console.WriteLine($"Here is your splitcomplemntary color harmony: {number}, {splitcomplement}, {splitcomplement2}");
         Console.ReadKey();
-       (int,int,int) complemantriesSplit = (number,splitcomplement, splitcomplement2);
-       return complemantriesSplit;
+        (int, int, int) complemantriesSplit = (number, splitcomplement, splitcomplement2);
+        return complemantriesSplit;
     }
 
 
 
-    public static (int,int,int) Triadic()
+    public static (int, int, int) Triadic()
     {
         Console.WriteLine("Enter the value of your number to get a  triadic harmony.");
         int number = int.Parse(Console.ReadLine());
@@ -130,24 +130,24 @@ public static class ColorHarmony
         if (Triadic2 > 360) Triadic2 = Triadic2 - 360;
         Console.WriteLine($"Here is your triadic color harmony:{number}, {triadic}, {Triadic2}");
         Console.ReadKey();
-        (int,int,int) complemantriesTriadic = (number, triadic, Triadic2);
+        (int, int, int) complemantriesTriadic = (number, triadic, Triadic2);
         return complemantriesTriadic;
     }
 
-    public static  (int,int, int) Tetradic()
+    public static (int, int, int) Tetradic()
     {
         Console.WriteLine("Enter the value of your number to get a  tetradic harmony.");
         int number = int.Parse(Console.ReadLine());
         int tetradic = number + 180;
-         int tetradic1 = tetradic + 180;
+        int tetradic1 = tetradic + 180;
         if (tetradic > 360) tetradic = tetradic - 360;
         Console.WriteLine($"Here is your tetradic color harmony:{number},{tetradic},{tetradic1} ");
         Console.ReadKey();
-    (int,int, int) complemantriesTetradic = (number,tetradic, tetradic1);
-    return complemantriesTetradic;
+        (int, int, int) complemantriesTetradic = (number, tetradic, tetradic1);
+        return complemantriesTetradic;
     }
 
-    public static (int,int,int,int) Square()
+    public static (int, int, int, int) Square()
     {
 
         Console.WriteLine("Enter the value of your number to get a square harmony.");
@@ -159,11 +159,11 @@ public static class ColorHarmony
         if (square2 > 360) square2 = square2 - 360;
         Console.WriteLine($"Here is your square color harmony:{number},{square}, {square1}, {square2}.");
         Console.ReadKey();
-        (int,int,int,int) complemantriesSquare = (number, square, square1,square2);
+        (int, int, int, int) complemantriesSquare = (number, square, square1, square2);
         return complemantriesSquare;
 
     }
-    public static(int,int,int,int) Monochromatic()
+    public static (int, int, int, int) Monochromatic()
     {
         Console.WriteLine("Enter the value of your number to get a monochromatic harmony.");
         int number = int.Parse(Console.ReadLine());
@@ -175,13 +175,13 @@ public static class ColorHarmony
         if (monochromatic2 > 360) monochromatic2 = monochromatic2 - 360;
         Console.WriteLine($" Here is your monochromatic color harmony:{number}, {monochromatic}, {monochromatic1}, {monochromatic2}. ");
         Console.ReadKey();
-      (int,int,int,int) complemantriesMonochromatic = (number, monochromatic,monochromatic1,monochromatic2);
-      return complemantriesMonochromatic;
+        (int, int, int, int) complemantriesMonochromatic = (number, monochromatic, monochromatic1, monochromatic2);
+        return complemantriesMonochromatic;
     }
 
 
 
-    public static (int,int,int,int) Analogus()
+    public static (int, int, int, int) Analogus()
     {
         Console.WriteLine("Enter the value of your number to get a analogous color harmony.");
         int number = int.Parse(Console.ReadLine());
@@ -193,14 +193,14 @@ public static class ColorHarmony
         if (analogous2 > 360) analogous2 = analogous2 - 360;
         Console.WriteLine($"Here is your analogous color harmony: {number}, {analogous}, {analogous1} ,{analogous2}.");
         Console.ReadKey();
-       (int,int,int,int) complemantriesAnalgous = (number, analogous,analogous1,analogous2);
-       return complemantriesAnalgous;
+        (int, int, int, int) complemantriesAnalgous = (number, analogous, analogous1, analogous2);
+        return complemantriesAnalgous;
     }
 
 
     public static void Menu()
     {
-        Console.WriteLine("What color Harmony would you like to use? 1. Complementary 2. Split Complemtary 3. Triadic 4. Tetradic 5. Square 6. Monochromatic , 7. Analogous , 8. exit Please enter a valid number");
+        Console.WriteLine("What color Harmony would you like to use? 1. Complementary 2. Split Complemtary 3. Triadic 4. Tetradic 5. Square 6. Monochromatic , 7. Analogous , 8. exit. Please enter a valid number");
         string? UserInput = Console.ReadLine();
 
 
@@ -229,7 +229,7 @@ public static class ColorHarmony
         if (UserInput == "8")
 
         {
-            Console.WriteLine("goodybye.");
+            Console.WriteLine("Thank you, for using the color palette generator,goodybye!");
             System.Environment.Exit(0);
         }
         else
