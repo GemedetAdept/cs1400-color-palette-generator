@@ -1,27 +1,77 @@
+using userinput;
 // Functions for converting between color modes
 
 /* TODO
 - HEX
-	- HEX to HSL
-	- HEX to HSV
-	- HEX to RGB
+	[x] HEX to HSL
+	[x] HEX to HSV
+	[x] HEX to RGB
 - HSL
-	- HSL to HEX
+	[x] HSL to HEX
 	[x] HSL to HSV
 	[x] HSL to RGB
 - HSV
-	- HSV to HEX
+	[x] HSV to HEX
 	[x] HSV to HSL
 	[x] HSV to RGB
 - RGB
-	- RGB to HEX
+	[x] RGB to HEX
 	[x] RGB to HSL
 	[x] RGB to HSV
 */
 
 public class ConvertMode {
 
+	// HEX
+	// Due to the way that HSL and HSV values are stored, 
+	// it is necessary to first convert to RGB and then use the respective "RGBto..." method.
+
+	public static (double, double, double) HEXtoHSL(string inputHEX) {
+
+		var stepRGB = HEXtoRGB(inputHEX);
+		var outputHSL = RGBtoHSL(stepRGB);
+
+		return outputHSL;
+	}
+	public static (double, double, double) HEXtoHSV(string inputHEX) {
+
+		var stepRGB = HEXtoRGB(inputHEX);
+		var outputHSV = RGBtoHSV(stepRGB);
+
+		return outputHSV;
+	}
+	public static (double, double, double) HEXtoRGB(string inputHEX) {
+		int decimalInteger = UserInput.ConvertToInteger(inputHEX);
+		byte[] valueBytes = BitConverter.GetBytes(decimalInteger);
+
+		// Byte array is in reverse "RGB" order, thus backwards indexes.
+		int redRGB = valueBytes[2];
+		int greenRGB = valueBytes[1];
+		int blueRGB = valueBytes[0];
+
+		var outputRGB = ((double)redRGB, (double)greenRGB, (double)blueRGB);
+		return outputRGB;
+	}
+
 	// RGB
+	public static string RGBtoHEX((double, double, double) inputRGB) {
+
+		int redRGB = (int)inputRGB.Item1;
+		int greenRGB = (int)inputRGB.Item2;
+		int blueRGB = (int)inputRGB.Item3;
+
+		byte[] valueBytes = new byte[] {
+
+			Convert.ToByte(blueRGB),
+			Convert.ToByte(greenRGB),
+			Convert.ToByte(redRGB),
+			0,
+		};
+
+		int intValue = BitConverter.ToInt32(valueBytes, 0);
+		string outputHEX = UserInput.ConvertToHexadecimal(intValue);
+		return outputHEX;
+	}	
 	public static (double, double, double) RGBtoHSV((double, double, double) inputRGB) {
 
 		double redPrimeRGB = inputRGB.Item1/255;
@@ -51,7 +101,7 @@ public class ConvertMode {
 
 			if (chroma == 0) {hueHSV = 0;}
 			else if (valueHSV == redPrimeRGB) {
-				// I do not know this is producing the inverse of what it should, but un-inverting it makes it work, so.
+				// I do not know why this is producing the inverse of what it should, but un-inverting it makes it work, so.
 				hueHSV = 60*(0 + (greenPrimeRGB - bluePrimeRGB)/chroma);
 				hueHSV = 360 + hueHSV;
 			}
@@ -96,7 +146,7 @@ public class ConvertMode {
 
 			if (chroma == 0) {hueHSL = 0;}
 			else if (maxRGB == redPrimeRGB) {
-				// I do not know this is producing the inverse of what it should, but un-inverting it makes it work, so.
+				// I do not know why this is producing the inverse of what it should, but un-inverting it makes it work, so.
 				hueHSL = 60*(0 + (greenPrimeRGB - bluePrimeRGB)/chroma);
 				hueHSL = 360 + hueHSL;
 			}
@@ -118,6 +168,13 @@ public class ConvertMode {
 	}
 
 	// HSV
+	public static string HSVtoHEX((double, double, double) inputHSV) {
+
+		var stepRGB = HSVtoRGB(inputHSV);
+		var outputHEX = RGBtoHEX(stepRGB);
+
+		return outputHEX;
+	}
 	public static (double, double, double) HSVtoHSL((double, double, double) inputHSV) {
 
 		double hueHSV = inputHSV.Item1;
@@ -190,7 +247,13 @@ public class ConvertMode {
 	}
 
 	// HSL
+	public static string HSLtoHEX((double, double, double) inputHSL) {
 
+		var stepRGB = HSLtoRGB(inputHSL);
+		var outputHEX = RGBtoHEX(stepRGB);
+
+		return outputHEX;
+	}
 	public static (double, double, double) HSLtoRGB((double, double, double) inputHSL) {
 
 		double hueHSL = inputHSL.Item1;
@@ -231,7 +294,6 @@ public class ConvertMode {
 		var outputRGB = (redRGB, greenRGB, blueRGB);
 		return outputRGB;
 	}
-
 	public static (double, double, double) HSLtoHSV((double, double, double) inputHSL) {
 
 		double hueHSL = inputHSL.Item1;
@@ -263,7 +325,6 @@ public class ConvertMode {
 
 		var outputHSV = (hueHSV, saturationHSV, valueHSV);
 		return outputHSV;
-
 	}
 
 	// Check Out-of-Bounds
