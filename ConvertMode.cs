@@ -1,3 +1,4 @@
+using userinput;
 // Functions for converting between color modes
 
 /* TODO
@@ -24,19 +25,7 @@ public class ConvertMode {
 	// HEX
 	// Due to the way that HSL and HSV values are stored, 
 	// it is necessary to first convert to RGB and then use the respective "RGBto..." method.
-	public static (double, double, double) HEXtoRGB(string inputHEX) {
 
-		int decimalInteger = UserInput.UserInput.ConvertToInteger(inputHEX);
-		byte[] valueBytes = BitConverter.GetBytes(decimalInteger);
-
-		// Byte array is in reverse "RGB" order, thus backwards indexes.
-		int redRGB = valueBytes[2];
-		int greenRGB = valueBytes[1];
-		int blueRGB = valueBytes[0];
-
-		var outputRGB = ((double)redRGB, (double)greenRGB, (double)blueRGB);
-		return outputRGB;
-	}
 	public static (double, double, double) HEXtoHSL(string inputHEX) {
 
 		var stepRGB = HEXtoRGB(inputHEX);
@@ -51,8 +40,38 @@ public class ConvertMode {
 
 		return outputHSV;
 	}
+	public static (double, double, double) HEXtoRGB(string inputHEX) {
+		int decimalInteger = UserInput.ConvertToInteger(inputHEX);
+		byte[] valueBytes = BitConverter.GetBytes(decimalInteger);
+
+		// Byte array is in reverse "RGB" order, thus backwards indexes.
+		int redRGB = valueBytes[2];
+		int greenRGB = valueBytes[1];
+		int blueRGB = valueBytes[0];
+
+		var outputRGB = ((double)redRGB, (double)greenRGB, (double)blueRGB);
+		return outputRGB;
+	}
 
 	// RGB
+	public static string RGBtoHEX((double, double, double) inputRGB) {
+
+		int redRGB = (int)inputRGB.Item1;
+		int greenRGB = (int)inputRGB.Item2;
+		int blueRGB = (int)inputRGB.Item3;
+
+		byte[] valueBytes = new byte[] {
+
+			Convert.ToByte(blueRGB),
+			Convert.ToByte(greenRGB),
+			Convert.ToByte(redRGB),
+			0,
+		};
+
+		int intValue = BitConverter.ToInt32(valueBytes, 0);
+		string outputHEX = UserInput.ConvertToHexadecimal(intValue);
+		return outputHEX;
+	}	
 	public static (double, double, double) RGBtoHSV((double, double, double) inputRGB) {
 
 		double redPrimeRGB = inputRGB.Item1/255;
@@ -149,6 +168,13 @@ public class ConvertMode {
 	}
 
 	// HSV
+	public static string HSVtoHEX((double, double, double) inputHSV) {
+
+		var stepRGB = HSVtoRGB(inputHSV);
+		var outputHEX = RGBtoHEX(stepRGB);
+
+		return outputHEX;
+	}
 	public static (double, double, double) HSVtoHSL((double, double, double) inputHSV) {
 
 		double hueHSV = inputHSV.Item1;
@@ -221,7 +247,13 @@ public class ConvertMode {
 	}
 
 	// HSL
+	public static string HSLtoHEX((double, double, double) inputHSL) {
 
+		var stepRGB = HSLtoRGB(inputHSL);
+		var outputHEX = RGBtoHEX(stepRGB);
+
+		return outputHEX;
+	}
 	public static (double, double, double) HSLtoRGB((double, double, double) inputHSL) {
 
 		double hueHSL = inputHSL.Item1;
@@ -293,7 +325,6 @@ public class ConvertMode {
 
 		var outputHSV = (hueHSV, saturationHSV, valueHSV);
 		return outputHSV;
-
 	}
 
 	// Check Out-of-Bounds
