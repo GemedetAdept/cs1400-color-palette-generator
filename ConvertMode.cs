@@ -2,8 +2,8 @@
 
 /* TODO
 - HEX
-	- HEX to HSL
-	- HEX to HSV
+	[x] HEX to HSL
+	[x] HEX to HSV
 	[x] HEX to RGB
 - HSL
 	- HSL to HEX
@@ -22,8 +22,9 @@
 public class ConvertMode {
 
 	// HEX
+	// Due to the way that HSL and HSV values are stored, 
+	// it is necessary to first convert to RGB and then use the respective "RGBto..." method.
 	public static (double, double, double) HEXtoRGB(string inputHEX) {
-		(double, double, double) outputRGB = (-4.19, -4.19, -4.19);
 
 		int decimalInteger = UserInput.UserInput.ConvertToInteger(inputHEX);
 		byte[] valueBytes = BitConverter.GetBytes(decimalInteger);
@@ -33,8 +34,22 @@ public class ConvertMode {
 		int greenRGB = valueBytes[1];
 		int blueRGB = valueBytes[0];
 
-		outputRGB = ((double)redRGB, (double)greenRGB, (double)blueRGB);
+		var outputRGB = ((double)redRGB, (double)greenRGB, (double)blueRGB);
 		return outputRGB;
+	}
+	public static (double, double, double) HEXtoHSL(string inputHEX) {
+
+		var stepRGB = HEXtoRGB(inputHEX);
+		var outputHSL = RGBtoHSL(stepRGB);
+
+		return outputHSL;
+	}
+	public static (double, double, double) HEXtoHSV(string inputHEX) {
+
+		var stepRGB = HEXtoRGB(inputHEX);
+		var outputHSV = RGBtoHSV(stepRGB);
+
+		return outputHSV;
 	}
 
 	// RGB
