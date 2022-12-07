@@ -4,7 +4,7 @@
 - HEX
 	- HEX to HSL
 	- HEX to HSV
-	- HEX to RGB
+	[x] HEX to RGB
 - HSL
 	- HSL to HEX
 	[x] HSL to HSV
@@ -20,6 +20,22 @@
 */
 
 public class ConvertMode {
+
+	// HEX
+	public static (double, double, double) HEXtoRGB(string inputHEX) {
+		(double, double, double) outputRGB = (-4.19, -4.19, -4.19);
+
+		int decimalInteger = UserInput.UserInput.ConvertToInteger(inputHEX);
+		byte[] valueBytes = BitConverter.GetBytes(decimalInteger);
+
+		// Byte array is in reverse "RGB" order, thus backwards indexes.
+		int redRGB = valueBytes[2];
+		int greenRGB = valueBytes[1];
+		int blueRGB = valueBytes[0];
+
+		outputRGB = ((double)redRGB, (double)greenRGB, (double)blueRGB);
+		return outputRGB;
+	}
 
 	// RGB
 	public static (double, double, double) RGBtoHSV((double, double, double) inputRGB) {
@@ -231,7 +247,6 @@ public class ConvertMode {
 		var outputRGB = (redRGB, greenRGB, blueRGB);
 		return outputRGB;
 	}
-
 	public static (double, double, double) HSLtoHSV((double, double, double) inputHSL) {
 
 		double hueHSL = inputHSL.Item1;
