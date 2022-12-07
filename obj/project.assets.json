@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "/Users/jasminecarrasco/.nuget/packages/": {}
+    "C:\\Users\\chadh\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/cs1400-color-palette-generator.csproj",
+      "projectUniqueName": "C:\\Users\\chadh\\code\\cs1400-color-palette-generator\\cs1400-color-palette-generator.csproj",
       "projectName": "cs1400-color-palette-generator",
-      "projectPath": "/Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/cs1400-color-palette-generator.csproj",
-      "packagesPath": "/Users/jasminecarrasco/.nuget/packages/",
-      "outputPath": "/Users/jasminecarrasco/source/repos/cs1400-color-palette-generator/obj/",
+      "projectPath": "C:\\Users\\chadh\\code\\cs1400-color-palette-generator\\cs1400-color-palette-generator.csproj",
+      "packagesPath": "C:\\Users\\chadh\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\chadh\\code\\cs1400-color-palette-generator\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/jasminecarrasco/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\chadh\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -59,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
