@@ -7,15 +7,15 @@ using userinput;
 	[x] HEX to HSV
 	[x] HEX to RGB
 - HSL
-	- HSL to HEX
+	[x] HSL to HEX
 	[x] HSL to HSV
 	[x] HSL to RGB
 - HSV
-	- HSV to HEX
+	[x] HSV to HEX
 	[x] HSV to HSL
 	[x] HSV to RGB
 - RGB
-	- RGB to HEX
+	[x] RGB to HEX
 	[x] RGB to HSL
 	[x] RGB to HSV
 */

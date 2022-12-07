@@ -1,5 +1,5 @@
 
-namespace userinput // Changed to lowercase per C# convention to remove naming conflict between namespace and class
+namespace userinput
 {
     internal class UserInput
     {
@@ -204,9 +204,7 @@ namespace userinput // Changed to lowercase per C# convention to remove naming c
 
         public static string ConvertToHexadecimal(int integer)
         {
-            // integer = int.Parse(Console.ReadLine());
             string hexadecimal = integer.ToString("X");
-            // Console.WriteLine(hexadecimal);
             return hexadecimal;
         }
     }
