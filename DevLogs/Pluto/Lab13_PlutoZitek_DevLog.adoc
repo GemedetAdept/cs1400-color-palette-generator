@@ -8,17 +8,17 @@ Pluto Zitek <https://github.com/GemedetAdept>
 
 .Goals
 ****
-* [ ] Implement remaining conversion methods
-** [ ] HEX
-*** [ ] HEX to HSL
-*** [ ] HEX to HSV
-*** [ ] HEX to RGB
-** [ ] HSL
-*** [ ] HSL to HEX
-** [ ] HSV
-*** [ ] HEX
-** [ ] RGB
-*** [ ] RGB to HEX
+* [x] Implement remaining conversion methods
+** [x] HEX
+*** [x] HEX to HSL
+*** [x] HEX to HSV
+*** [x] HEX to RGB
+** [x] HSL
+*** [x] HSL to HEX
+** [x] HSV
+*** [x] HEX
+** [x] RGB
+*** [x] RGB to HEX
 * [ ] Implement ValueDeviation class for controlled randomization of output colors
 ** [x] Implement custom, adjustable logistic function
 *** [x] Method to catch invalid floor and ceiling values
@@ -27,6 +27,11 @@ Pluto Zitek <https://github.com/GemedetAdept>
 *** [ ] Hue, HSL
 *** [ ] (R,G,B), RGB
 *** [ ] (R,G,B), HEX
+* [ ] Create a menu(s) for each step requiring user input
+** [ ] Main menu
+** [ ] Color code input
+** [ ] Color harmony selection
+* [ ] Link all methods together 
 ****
 
 == Implementation and Progress
@@ -46,3 +51,28 @@ image::RGB_Cube_Show_lowgamma_cutout_b.png[]
 .HSV and HSL color space cylinders
 [By Jacob Rus - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=9445469]
 image::Hsl-hsv_models.svg.png[]
+
+== Color Conversion Methods
+--- 
+
+With Chad's Hexadecimal stem:[\Longleftrightarrow] Decimal (HtoD, DtoH) methods being completed, I have completed the rest of the color mode conversion methods. In doing so, I ran into a minor compatibility issue. That being the difference in the way that RGB value data is stored and the output of the HtoD methods. (Note that this is a dirct an issue with HEXstem:[\Longleftrightarrow]RGB conversion, but an _indirect_ issue with HSV and HSL. This is because, as will be show below, converting between HEX and HSL/HSV requires the respective RGB values as a stepping stone.)
+
+=== Direct Data Discrepancy
+
+The HtoD methods use and return a single, 32-bit/4-byte, signed integer. However, the current RGB conversion methods rely on there being 3, 8-bit/byte, unsigned integers, stored as a tuple. Luckily, the proccess for retrieving these values from the 32-bit integer (Int32) is straight-forward.
+
+.HEX to RGB
+1. Using the HtoD method, retrieve each byte and store in a `byte` array. Relative to RGB color, the array is structured as such: [Blue value, Green value, Red value, Pos/Neg sign]
+2. Remove the Pos/Neg byte, leaving an array of 3 bytes.
+3. Because the array is in reverse-RGB order, reverse the array.
+4. Cast to `double` and store the respective values in a tuple.
+
+
+.RGB to HEX
+1. For each value in an RGB color, convert into a `byte` datatype.
+2. Store the values in an array in reverse-RGB order, adding a `0` Pos/Neg byte as the last item.
+3. Convert the array into an Int32.
+4. Pass the Int32 through the DtoH method to retrieve the hexadecimal color string.
+
+.HSV and HSL
+I have not found any methods or equations for converting directly to HSV or HSL from a HEX color code. Instead, these conversions are done by first converting the input code to RGB, and then converting the RGB value to the desired output code.
