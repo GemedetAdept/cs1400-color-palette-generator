@@ -1,24 +1,29 @@
 
 namespace userinput
 {
-    internal class UserInput
+    public class UserInput
     {
-        public static void Input()
+        public static string userInput;
+
+        public static (double, double, double) Input()
         {
           
-            string userInput = GetUserInput("Do you want to input color for Hexadecimal, RGB, HSL, or HSV? ");
-
+            userInput = GetUserInput("Do you want to input color for Hexadecimal, RGB, HSL, or HSV? ");
+            (double, double, double) userOutputHSV = (-4.19, -4.19, -4.19);
 
 
             if (string.Equals(userInput, "Hexadecimal", StringComparison.OrdinalIgnoreCase))
             {
                 Console.WriteLine("Enter a valid Hexadecimal value eg(#806FD9)");
                 string? hexadecimal = Console.ReadLine();
+
+                if (hexadecimal.Contains("#")) {hexadecimal = hexadecimal.Substring(1);}
                 if (IsHexadecimal(hexadecimal))
                 {
-                    Console.WriteLine(ConvertToInteger(hexadecimal));
-
+                    userOutputHSV = ConvertMode.HEXtoHSV(hexadecimal);
+                    return userOutputHSV;
                 }
+
             }
             else if (string.Equals(userInput, "RGB", StringComparison.OrdinalIgnoreCase))
             {
@@ -27,8 +32,8 @@ namespace userinput
                 int Green = GetRGB("Enter a Green value between 0 and 255");
                 int Blue = GetRGB("Enter a Blue value between 0 and 255");
                 (int Red, int Green, int Blue) RGB = (Red, Green, Blue);
-                Console.WriteLine(RGB);
-
+                userOutputHSV = ConvertMode.RGBtoHSV(RGB);
+                return userOutputHSV;
 
             }
             else if (string.Equals(userInput, "HSL", StringComparison.OrdinalIgnoreCase))
@@ -38,7 +43,8 @@ namespace userinput
                 int Saturation = GetHSL("Enter a Saturation between 0 and 100");
                 int Lightness = GetHSL("Enter a Lightness between 0 and 100");
                 (int Hue, int Saturation, int Lightness) HSL = (Hue, Saturation, Lightness);
-                Console.WriteLine(HSL);
+                userOutputHSV = ConvertMode.HSLtoHSV(HSL);
+                return userOutputHSV;
 
             }
 
@@ -48,10 +54,13 @@ namespace userinput
                 int Hue = GetHSV("Enter a Hue between 0 and 255");
                 int Saturation = GetHSV("Enter a Saturation between 0 and 255");
                 int Value = GetHSV("Enter a Value between 0 and 255");
-                (int Hue, int Saturation, int Value) HSV = (Hue, Saturation, Value);
-                Console.WriteLine(HSV);
+                (double Hue, double Saturation, double Value) HSV = (Hue, Saturation, Value);
+                userOutputHSV = HSV;
+                return userOutputHSV;
 
             }
+
+            return userOutputHSV;
         }
         public static int GetHSV(string prompt)
         {

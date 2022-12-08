@@ -2,9 +2,11 @@
 // By: Jasmine Carrasco, Chad Miller, and Pluto Zitek
 using userinput;
 
-UserInput.Input();
+var standardInput = UserInput.Input();
+var harmonyOutput = ColorHarmony.Menu(inputHue);
+foreach (int val in harmonyOutput) {Console.WriteLine(val);}
 
-// What are the color harmonies?
-ColorHarmony.Colorharmonypick();
-ColorHarmony.ColorHarmonyInfo();
-ColorHarmony.Menu();
+// // What are the color harmonies?
+// ColorHarmony.Colorharmonypick();
+// ColorHarmony.ColorHarmonyInfo();
+// ColorHarmony.Menu(inputHue);

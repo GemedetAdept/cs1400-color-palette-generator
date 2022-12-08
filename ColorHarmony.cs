@@ -71,7 +71,7 @@ public static class ColorHarmony
             Analogousmeaning();
 
         if (UserPick == "h")
-            Menu();
+            Menu(localInputHue);
 
     }
 
@@ -82,29 +82,28 @@ public static class ColorHarmony
         if (response == "y")
             ColorHarmonyInfo();
         if (response == "n")
-            Menu();
+            Menu(localInputHue);
 
 
     }
 
 
-
-
-    public static (int, int) Complementary()
+    public static int[] Complementary(int inputHue)
     {
-        Console.WriteLine("Enter the value of your number to get a complemntary harmony.");
-        int number = int.Parse(Console.ReadLine());
-        int complement = number + 180;
+        // Console.WriteLine("Enter the value of your number to get a complemntary harmony.");
+        // int number = int.Parse(Console.ReadLine());
+
+        int complement = inputHue + 180; //
         if (complement > 360) complement = complement - 360;
 
-        Console.WriteLine($" Here is your complemtary harmony: {number}, {complement}");
+        Console.WriteLine($" Here is your complemtary harmony: {inputHue}, {complement}");
         Console.ReadKey();
-        (int, int) complements = (number, complement);
+        int[] complements = new int[]{inputHue, complement};
         return complements;
     }
 
 
-    public static (int, int, int) SplitComplementary()
+    public static int[] SplitComplementary()
     {
         Console.WriteLine("Enter the value of your number to get a  slplit complemntary harmony.");
         int number = int.Parse(Console.ReadLine());
@@ -114,13 +113,13 @@ public static class ColorHarmony
         if (splitcomplement2 > 360) splitcomplement2 = splitcomplement2 - 360;
         Console.WriteLine($"Here is your splitcomplemntary color harmony: {number}, {splitcomplement}, {splitcomplement2}");
         Console.ReadKey();
-        (int, int, int) complemantriesSplit = (number, splitcomplement, splitcomplement2);
+        int[] complemantriesSplit = new int[]{number, splitcomplement, splitcomplement2};
         return complemantriesSplit;
     }
 
 
 
-    public static (int, int, int) Triadic()
+    public static int[] Triadic()
     {
         Console.WriteLine("Enter the value of your number to get a  triadic harmony.");
         int number = int.Parse(Console.ReadLine());
@@ -130,11 +129,11 @@ public static class ColorHarmony
         if (Triadic2 > 360) Triadic2 = Triadic2 - 360;
         Console.WriteLine($"Here is your triadic color harmony:{number}, {triadic}, {Triadic2}");
         Console.ReadKey();
-        (int, int, int) complemantriesTriadic = (number, triadic, Triadic2);
+        int[] complemantriesTriadic = new int[]{number, triadic, Triadic2};
         return complemantriesTriadic;
     }
 
-    public static (int, int, int) Tetradic()
+    public static int[] Tetradic()
     {
         Console.WriteLine("Enter the value of your number to get a  tetradic harmony.");
         int number = int.Parse(Console.ReadLine());
@@ -143,11 +142,11 @@ public static class ColorHarmony
         if (tetradic > 360) tetradic = tetradic - 360;
         Console.WriteLine($"Here is your tetradic color harmony:{number},{tetradic},{tetradic1} ");
         Console.ReadKey();
-        (int, int, int) complemantriesTetradic = (number, tetradic, tetradic1);
+        int[] complemantriesTetradic = new int[]{number, tetradic, tetradic1};
         return complemantriesTetradic;
     }
 
-    public static (int, int, int, int) Square()
+    public static int[] Square()
     {
 
         Console.WriteLine("Enter the value of your number to get a square harmony.");
@@ -159,11 +158,11 @@ public static class ColorHarmony
         if (square2 > 360) square2 = square2 - 360;
         Console.WriteLine($"Here is your square color harmony:{number},{square}, {square1}, {square2}.");
         Console.ReadKey();
-        (int, int, int, int) complemantriesSquare = (number, square, square1, square2);
+        int[] complemantriesSquare = new int[]{number, square, square1, square2};
         return complemantriesSquare;
 
     }
-    public static (int, int, int, int) Monochromatic()
+    public static int[] Monochromatic()
     {
         Console.WriteLine("Enter the value of your number to get a monochromatic harmony.");
         int number = int.Parse(Console.ReadLine());
@@ -175,13 +174,13 @@ public static class ColorHarmony
         if (monochromatic2 > 360) monochromatic2 = monochromatic2 - 360;
         Console.WriteLine($" Here is your monochromatic color harmony:{number}, {monochromatic}, {monochromatic1}, {monochromatic2}. ");
         Console.ReadKey();
-        (int, int, int, int) complemantriesMonochromatic = (number, monochromatic, monochromatic1, monochromatic2);
+        int[] complemantriesMonochromatic = new int[]{number, monochromatic, monochromatic1, monochromatic2};
         return complemantriesMonochromatic;
     }
 
 
 
-    public static (int, int, int, int) Analogus()
+    public static int[] Analogus()
     {
         Console.WriteLine("Enter the value of your number to get a analogous color harmony.");
         int number = int.Parse(Console.ReadLine());
@@ -193,38 +192,45 @@ public static class ColorHarmony
         if (analogous2 > 360) analogous2 = analogous2 - 360;
         Console.WriteLine($"Here is your analogous color harmony: {number}, {analogous}, {analogous1} ,{analogous2}.");
         Console.ReadKey();
-        (int, int, int, int) complemantriesAnalgous = (number, analogous, analogous1, analogous2);
+        int[] complemantriesAnalgous = new int[]{number, analogous, analogous1, analogous2};
         return complemantriesAnalgous;
     }
 
-
-    public static void Menu()
+    static int localInputHue;
+    public static List<int> Menu(int inputHue)
     {
+        localInputHue = inputHue;
+        List<int> harmonyOutput = new List<int>();
         Console.WriteLine("What color Harmony would you like to use? 1. Complementary 2. Split Complemtary 3. Triadic 4. Tetradic 5. Square 6. Monochromatic , 7. Analogous , 8. exit. Please enter a valid number");
         string? UserInput = Console.ReadLine();
 
-
-
         if (UserInput == "1")
-            Complementary();
+            harmonyOutput = Complementary(inputHue).ToList();
+            return harmonyOutput;
 
         if (UserInput == "2")
-            SplitComplementary();
+            harmonyOutput = SplitComplementary().ToList();
+            return harmonyOutput;
 
         if (UserInput == "3")
-            Triadic();
+            harmonyOutput = Triadic().ToList();
+            return harmonyOutput;
 
         if (UserInput == "4")
-            Tetradic();
+            harmonyOutput = Tetradic().ToList();
+            return harmonyOutput;
 
         if (UserInput == "5")
-            Square();
+            harmonyOutput = Square().ToList();
+            return harmonyOutput;
 
         if (UserInput == "6")
-            Monochromatic();
+            harmonyOutput = Monochromatic().ToList();
+            return harmonyOutput;
 
         if (UserInput == "7")
-            Analogus();
+            harmonyOutput = Analogus().ToList();
+            return harmonyOutput;
 
         if (UserInput == "8")
 
@@ -234,12 +240,10 @@ public static class ColorHarmony
         }
         else
         {
-            Menu();
+            Menu(localInputHue);
         }
 
     }
-
-
 
 
 
