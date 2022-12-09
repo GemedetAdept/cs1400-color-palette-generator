@@ -76,3 +76,11 @@ The HtoD methods use and return a single, 32-bit/4-byte, signed integer. However
 
 .HSV and HSL
 I have not found any methods or equations for converting directly to HSV or HSL from a HEX color code. Instead, these conversions are done by first converting the input code to RGB, and then converting the RGB value to the desired output code.
+
+=== Incompatibility Issues
+
+Although each section works great on its own, they operate differently from each other and cannot be directly connected. In order for the project to be finished, these differences will need to be adapted to each other. So far, this has ranged from simply fixing the output once it is returned, to making large changes in how the sections operate, take input, and return output.
+
+== Goals Retrospective
+
+It does not look like I will be able to complete either the ValueDeviation method nor the menus in time for the submission of this DevLog. Additionally, I am unsure if there will be time for the ValueDeviation method at all. However, I will be able to add in the menus post-submission, especially because they are important for the completion of the project.

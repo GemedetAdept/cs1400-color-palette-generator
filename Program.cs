@@ -3,8 +3,10 @@
 using userinput;
 
 var standardInput = UserInput.Input();
-var harmonyOutput = ColorHarmony.Menu(inputHue);
-foreach (int val in harmonyOutput) {Console.WriteLine(val);}
+List<double> harmonyOutput = ColorHarmony.Menu(standardInput);
+
+Console.WriteLine(standardInput);
+foreach (double val in harmonyOutput) {Console.WriteLine(val);}
 
 // // What are the color harmonies?
 // ColorHarmony.Colorharmonypick();
