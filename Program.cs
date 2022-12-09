@@ -46,6 +46,11 @@ mainMenu();
 
 void generationDriver() {
 
+	paletteHEX.Clear();
+	paletteHSL.Clear();
+	paletteHSV.Clear();
+	paletteRGB.Clear();
+
 	(double, double, double) baseHSV = UserInput.Input();
 	List<double> harmonyOutput = ColorHarmony.Menu(baseHSV);
 
