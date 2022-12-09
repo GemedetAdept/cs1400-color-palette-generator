@@ -11,7 +11,7 @@ var paletteRGB = new List<(double, double, double)>();
 MenuDriver selectionMenu = new MenuDriver();
 string[] options = new string[] {
 
-	"Generate New Palette",
+	"Generate New Color Palette",
 	"Learn About Color Harmonies",
 	"Quit Program",
 };
