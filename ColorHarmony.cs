@@ -96,8 +96,8 @@ public static class ColorHarmony
         double complement = inputHue + 180;
         if (complement > 360) complement = complement - 360;
 
-        Console.WriteLine($" Here is your complemtary harmony: {inputHue}, {complement}");
-        Console.ReadKey();
+        // Console.WriteLine($" Here is your complemtary harmony: {inputHue}, {complement}");
+        // Console.ReadKey();
         double[] complements = new double[]{inputHue, complement};
         return complements;
     }
@@ -111,8 +111,8 @@ public static class ColorHarmony
         double splitcomplement2 = inputHue + 180+30;
         if (splitcomplement > 360) splitcomplement = splitcomplement - 360;
         if (splitcomplement2 > 360) splitcomplement2 = splitcomplement2 - 360;
-        Console.WriteLine($"Here is your splitcomplemntary color harmony: {inputHue}, {splitcomplement}, {splitcomplement2}");
-        Console.ReadKey();
+        // Console.WriteLine($"Here is your splitcomplemntary color harmony: {inputHue}, {splitcomplement}, {splitcomplement2}");
+        // Console.ReadKey();
         double[] complemantriesSplit = new double[]{inputHue, splitcomplement, splitcomplement2};
         return complemantriesSplit;
     }
@@ -127,8 +127,8 @@ public static class ColorHarmony
         double Triadic2 = triadic + 120;
         if (triadic > 360) triadic = triadic - 360;
         if (Triadic2 > 360) Triadic2 = Triadic2 - 360;
-        Console.WriteLine($"Here is your triadic color harmony:{inputHue}, {triadic}, {Triadic2}");
-        Console.ReadKey();
+        // Console.WriteLine($"Here is your triadic color harmony:{inputHue}, {triadic}, {Triadic2}");
+        // Console.ReadKey();
         double[] complemantriesTriadic = new double[]{inputHue, triadic, Triadic2};
         return complemantriesTriadic;
     }
@@ -143,8 +143,8 @@ public static class ColorHarmony
         if (tetradic > 360) tetradic1 = tetradic1 - 360;
         double tetradic2 = tetradic1 + 60;
         if (tetradic2 > 360) tetradic2 = tetradic2 - 360;
-        Console.WriteLine($"Here is your tetradic color harmony:{inputHue},{tetradic},{tetradic1},{tetradic2}");
-        Console.ReadKey();
+        // Console.WriteLine($"Here is your tetradic color harmony:{inputHue},{tetradic},{tetradic1},{tetradic2}");
+        // Console.ReadKey();
         double[] complemantriesTetradic = new double[]{inputHue, tetradic, tetradic1, tetradic2};
         return complemantriesTetradic;
     }
@@ -160,8 +160,8 @@ public static class ColorHarmony
         if (square1 > 360) square1 = square1 - 360;
         double square2 = square1 + 90;
         if (square2 > 360) square2 = square2 - 360;
-        Console.WriteLine($"Here is your square color harmony:{inputHue},{square}, {square1}, {square2}.");
-        Console.ReadKey();
+        // Console.WriteLine($"Here is your square color harmony:{inputHue},{square}, {square1}, {square2}.");
+        // Console.ReadKey();
         double[] complemantriesSquare = new double[]{inputHue, square, square1, square2};
         return complemantriesSquare;
 
@@ -197,8 +197,8 @@ public static class ColorHarmony
         if (analogous1 > 360) analogous1 = analogous1 - 360;
         // double analogous2 = analogous1 + 15;
         // if (analogous2 > 360) analogous2 = analogous2 - 360;
-        Console.WriteLine($"Here is your analogous color harmony: {inputHue}, {analogous}, {analogous1}.");
-        Console.ReadKey();
+        // Console.WriteLine($"Here is your analogous color harmony: {inputHue}, {analogous}, {analogous1}.");
+        // Console.ReadKey();
         double[] complemantriesAnalgous = new double[]{inputHue, analogous, analogous1};
         return complemantriesAnalgous;
     }
