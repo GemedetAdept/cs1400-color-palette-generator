@@ -8,6 +8,7 @@ namespace userinput
         public static (double, double, double) Input()
         {
           
+            Console.Clear();
             userInput = GetUserInput("Do you want to input color for Hexadecimal, RGB, HSL, or HSV? ");
             (double, double, double) userOutputHSV = (-4.19, -4.19, -4.19);
 
@@ -126,6 +127,7 @@ namespace userinput
         {
             while (true)
             {
+                Console.Clear();
                 Console.WriteLine(prompt);
                 try
                 {

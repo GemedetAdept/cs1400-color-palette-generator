@@ -8,44 +8,58 @@ public static class ColorHarmony
     public static void complemenatryMeaning()
     {
         Console.WriteLine("The color harmony Complmentary, is when pairs of colors are positioned on opposite ends of the color wheel (or color circle), and they can be either primary, secondary, or tertiary colors.");
-
+        Console.ReadKey();
+        ColorHarmonyInfo();
     }
 
     public static void SplitComplementarymeaning()
     {
         Console.WriteLine("The color harmony Split Complemnatry is deifined as one key color and two colors adjacent to that key colors complement.");
+        Console.ReadKey();
+        ColorHarmonyInfo();
     }
 
     public static void Triadicmeaning()
     {
         Console.WriteLine("The color harmony Triadic, is when color combinations consist of three colors evenly spaced on the color wheel.");
+        Console.ReadKey();
+        ColorHarmonyInfo();
     }
 
 
     public static void Tetradicmeaning()
     {
         Console.WriteLine("The color harmony Tetradic is when four individual colors: a key color and three more colors, are all equidistant from the key color on the color wheel.");
+        Console.ReadKey();
+        ColorHarmonyInfo();
     }
 
 
     public static void Squaremeaning()
     {
         Console.WriteLine("The Square color harmomny consist of four colors spaced evenly around the color wheel. To create a square color palette, pick the key color to start with. Then identify the other colors that are equidistant from that color. You’ll basically end up with two complementary pairs.");
+        Console.ReadKey();
+        ColorHarmonyInfo();
     }
 
     public static void Monochromaticmeaning()
     {
         Console.WriteLine("The Monochromatic color harmony is defined as a single base hue and extend the color scheme by using different shades, tones, and tdoubles of that color family.");
+        Console.ReadKey();
+        ColorHarmonyInfo();
     }
 
 
     public static void Analogousmeaning()
     {
         Console.WriteLine("The analogous color harmony is defined as three hues, all positioned next to each other on the color wheel. ");
+        Console.ReadKey();
+        ColorHarmonyInfo();
     }
 
     public static void ColorHarmonyInfo()
     {
+        Console.Clear();
         Console.WriteLine("What color harmony would you like to know about? Enter a letter a-h.  a. Complememtary b. SplitComplemenatry c. Triadic d. Tetradic e. Square f. Monochromatic g. Analogous h. Contiune");
         string? UserPick = Console.ReadLine();
         if (UserPick == "a")
@@ -70,19 +84,15 @@ public static class ColorHarmony
         if (UserPick == "g")
             Analogousmeaning();
 
-        if (UserPick == "h")
-            Menu(localColorInput);
-
     }
 
     public static void Colorharmonypick()
     {
+        Console.Clear();
         Console.WriteLine("Would you like to know about the differnt color harmonies? y or n.");
         string? response = Console.ReadLine();
         if (response == "y")
             ColorHarmonyInfo();
-        if (response == "n")
-            Menu(localColorInput);
 
 
     }
@@ -203,36 +213,41 @@ public static class ColorHarmony
         return complemantriesAnalgous;
     }
 
-    static (double, double, double) localColorInput;
+    public static string userHarmonyChoice;
     public static List<double> Menu((double, double, double) userColorInput)
     {
-        localColorInput = userColorInput;
+        Console.Clear();
         List<double> harmonyOutput = new List<double>();
         Console.WriteLine("What color Harmony would you like to use? 1. Complementary 2. Split Complemtary 3. Triadic 4. Tetradic 5. Square 6. Monochromatic , 7. Analogous , 8. exit. Please enter a valid inputHue");
         string? UserInput = Console.ReadLine();
 
         if (UserInput == "1") {
             harmonyOutput = Complementary(userColorInput).ToList();
+            userHarmonyChoice = "Complementary";
             return harmonyOutput;
         }
 
         if (UserInput == "2") {
             harmonyOutput = SplitComplementary(userColorInput).ToList();
+            userHarmonyChoice = "Split Complementary";
             return harmonyOutput;
         }
 
         if (UserInput == "3") {
             harmonyOutput = Triadic(userColorInput).ToList();
+            userHarmonyChoice = "Triadic";
             return harmonyOutput;
         }
 
         if (UserInput == "4") {
             harmonyOutput = Tetradic(userColorInput).ToList();
+            userHarmonyChoice = "Tetradic";
             return harmonyOutput;
         }
 
         if (UserInput == "5") {
             harmonyOutput = Square(userColorInput).ToList();
+            userHarmonyChoice = "Square";
             return harmonyOutput;
         }
 
@@ -243,6 +258,7 @@ public static class ColorHarmony
 
         if (UserInput == "7") {
             harmonyOutput = Analogus(userColorInput).ToList();
+            userHarmonyChoice = "Analogus";
             return harmonyOutput;
         }
 
@@ -254,7 +270,7 @@ public static class ColorHarmony
         }
         else
         {
-            Menu(localColorInput);
+            Menu(userColorInput);
         }
         return harmonyOutput;
     }
