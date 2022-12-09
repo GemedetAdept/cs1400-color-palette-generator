@@ -107,8 +107,8 @@ public static class ColorHarmony
     {
         // Hue
         double inputHue = userColorInput.Item1;
-        double splitcomplement = inputHue + 180;
-        double splitcomplement2 = splitcomplement / 2;
+        double splitcomplement = inputHue + 180-30;
+        double splitcomplement2 = inputHue + 180+30;
         if (splitcomplement > 360) splitcomplement = splitcomplement - 360;
         if (splitcomplement2 > 360) splitcomplement2 = splitcomplement2 - 360;
         Console.WriteLine($"Here is your splitcomplemntary color harmony: {inputHue}, {splitcomplement}, {splitcomplement2}");
@@ -123,8 +123,8 @@ public static class ColorHarmony
     {
         // Hue
         double inputHue = userColorInput.Item1;
-        double triadic = inputHue + 180;
-        double Triadic2 = triadic + 180;
+        double triadic = inputHue + 120;
+        double Triadic2 = triadic + 120;
         if (triadic > 360) triadic = triadic - 360;
         if (Triadic2 > 360) Triadic2 = Triadic2 - 360;
         Console.WriteLine($"Here is your triadic color harmony:{inputHue}, {triadic}, {Triadic2}");
@@ -137,12 +137,15 @@ public static class ColorHarmony
     {
         // Hue
         double inputHue = userColorInput.Item1;
-        double tetradic = inputHue + 180;
-        double tetradic1 = tetradic + 180;
+        double tetradic = inputHue + 60;
         if (tetradic > 360) tetradic = tetradic - 360;
-        Console.WriteLine($"Here is your tetradic color harmony:{inputHue},{tetradic},{tetradic1} ");
+        double tetradic1 = tetradic + 120;
+        if (tetradic > 360) tetradic1 = tetradic1 - 360;
+        double tetradic2 = tetradic1 + 60;
+        if (tetradic2 > 360) tetradic2 = tetradic2 - 360;
+        Console.WriteLine($"Here is your tetradic color harmony:{inputHue},{tetradic},{tetradic1},{tetradic2}");
         Console.ReadKey();
-        double[] complemantriesTetradic = new double[]{inputHue, tetradic, tetradic1};
+        double[] complemantriesTetradic = new double[]{inputHue, tetradic, tetradic1, tetradic2};
         return complemantriesTetradic;
     }
 
@@ -152,9 +155,10 @@ public static class ColorHarmony
         // Hue
         double inputHue = userColorInput.Item1;
         double square = inputHue + 90;
-        double square1 = square + 90;
-        double square2 = square1 + 90;
         if (square > 360) square = square - 360;
+        double square1 = square + 90;
+        if (square1 > 360) square1 = square1 - 360;
+        double square2 = square1 + 90;
         if (square2 > 360) square2 = square2 - 360;
         Console.WriteLine($"Here is your square color harmony:{inputHue},{square}, {square1}, {square2}.");
         Console.ReadKey();
@@ -162,21 +166,24 @@ public static class ColorHarmony
         return complemantriesSquare;
 
     }
-    public static double[] Monochromatic((double, double, double) userColorInput)
-    {
-        // Hue
-        double inputHue = userColorInput.Item1;
-        double monochromatic = inputHue + 30;
-        double monochromatic1 = monochromatic + 15;
-        double monochromatic2 = monochromatic1 + 15;
-        if (monochromatic > 360) monochromatic = monochromatic - 360;
-        if (monochromatic1 > 360) monochromatic1 = monochromatic1 - 360;
-        if (monochromatic2 > 360) monochromatic2 = monochromatic2 - 360;
-        Console.WriteLine($" Here is your monochromatic color harmony:{inputHue}, {monochromatic}, {monochromatic1}, {monochromatic2}. ");
-        Console.ReadKey();
-        double[] complemantriesMonochromatic = new double[]{inputHue, monochromatic, monochromatic1, monochromatic2};
-        return complemantriesMonochromatic;
-    }
+
+    // A monochromatic palette only varies in value and saturation
+
+    // public static double[] Monochromatic((double, double, double) userColorInput)
+    // {
+    //     // Hue
+    //     double inputHue = userColorInput.Item1;
+    //     double monochromatic = inputHue + 30;
+    //     double monochromatic1 = monochromatic + 15;
+    //     double monochromatic2 = monochromatic1 + 15;
+    //     if (monochromatic > 360) monochromatic = monochromatic - 360;
+    //     if (monochromatic1 > 360) monochromatic1 = monochromatic1 - 360;
+    //     if (monochromatic2 > 360) monochromatic2 = monochromatic2 - 360;
+    //     Console.WriteLine($" Here is your monochromatic color harmony:{inputHue}, {monochromatic}, {monochromatic1}, {monochromatic2}. ");
+    //     Console.ReadKey();
+    //     double[] complemantriesMonochromatic = new double[]{inputHue, monochromatic, monochromatic1, monochromatic2};
+    //     return complemantriesMonochromatic;
+    // }
 
 
 
@@ -184,15 +191,15 @@ public static class ColorHarmony
     {
         // Hue
         double inputHue = userColorInput.Item1;
-        double analogous = inputHue + 15;
-        double analogous1 = analogous + 15;
-        double analogous2 = analogous1 + 15;
+        double analogous = inputHue + 30;
         if (analogous > 360) analogous = analogous - 360;
+        double analogous1 = analogous + 360-60;
         if (analogous1 > 360) analogous1 = analogous1 - 360;
-        if (analogous2 > 360) analogous2 = analogous2 - 360;
-        Console.WriteLine($"Here is your analogous color harmony: {inputHue}, {analogous}, {analogous1} ,{analogous2}.");
+        // double analogous2 = analogous1 + 15;
+        // if (analogous2 > 360) analogous2 = analogous2 - 360;
+        Console.WriteLine($"Here is your analogous color harmony: {inputHue}, {analogous}, {analogous1}.");
         Console.ReadKey();
-        double[] complemantriesAnalgous = new double[]{inputHue, analogous, analogous1, analogous2};
+        double[] complemantriesAnalgous = new double[]{inputHue, analogous, analogous1};
         return complemantriesAnalgous;
     }
 
@@ -229,10 +236,10 @@ public static class ColorHarmony
             return harmonyOutput;
         }
 
-        if (UserInput == "6") {
-            harmonyOutput = Monochromatic(userColorInput).ToList();
-            return harmonyOutput;
-        }
+        // if (UserInput == "6") {
+        //     harmonyOutput = Monochromatic(userColorInput).ToList();
+        //     return harmonyOutput;
+        // }
 
         if (UserInput == "7") {
             harmonyOutput = Analogus(userColorInput).ToList();
