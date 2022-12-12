@@ -50,6 +50,9 @@ public class ConvertMode {
 
 		int intValue = BitConverter.ToInt32(valueBytes, 0);
 		string outputHEX = UserInput.ConvertToHexadecimal(intValue);
+
+		if (outputHEX.Length < 6) {outputHEX = "0" + outputHEX;}
+
 		return outputHEX;
 	}	
 	public static (double, double, double) RGBtoHSV((double, double, double) inputRGB) {
